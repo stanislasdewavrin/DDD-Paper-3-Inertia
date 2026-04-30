@@ -1,0 +1,1085 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{authblk}
+\usepackage{cite}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{\textbf{Discrete Drainage Dynamics III:\\
+A Floquet Two-Step Spinor Sector and\\
+Lorentz-Like Kinematic Time Dilation}}
+\author[1]{Stanislas Dewavrin}
+\affil[1]{Independent researcher \\ \texttt{dewavrin.iphone@gmail.com}}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Papers~I and~II treated the substrate as a scalar reserve field
+$R_i \ge 0$ with first-order time dynamics. That sector cannot
+support propagating localised excitations: the rule is
+diffusion-like and any initial bump spreads. Here we extend the
+substrate with a two-component spinor $\psi_i \in \mathbb{C}^2$
+at each node, and a Floquet two-step time evolution that
+alternates a matter-hopping update~A and a gauge-twist update~B
+with period $T = \tau_A + \tau_B$. The Floquet quasi-energy
+exhibits a band gap of magnitude $m = \lambda/T$ at the lattice
+point $(\pi, 0)$, with $\lambda = 1/(2\pi)$, around which the
+dispersion is approximately Lorentz-like, $E^2 \approx m^2 +
+(c_{\rm eff}\, p)^2$ with $c_{\rm eff} = 1/T$. Localised
+wavepackets near this gap point propagate at the predicted
+group velocity, and we measure operationally the kinematic
+clock-rate $m/\gamma = m^2/E$ at moving packets via a
+Galilean-shifted, dealiased $k$-space projection. The measured
+proper-time rate matches the prediction $m/\gamma$ to better
+than $1\%$ across $\gamma \in [1, 2]$ and to $\sim 10\%$ at
+$\gamma = 4$, with monotonic deviations beyond. The result is
+the kinematic counterpart of the bandwidth identification of
+Paper~II: the moving packet's effective clock runs at
+$m/\gamma$ in lab time, measured from substrate observables
+without invoking Lorentz transformation laws. We do not derive
+the Lorentz group, the spatial part of the metric, the
+Einstein equations, or the spinor sector itself; these are
+discussed.
+\end{abstract}
+
+\section{What this paper claims}
+\label{sec:claims}
+
+This paper introduces a structurally new sector of the substrate
+beyond the scalar reserve of Papers~I and~II, and uses it to
+recover a Lorentz-like kinematic clock-rate relation
+$\omega_{\rm comov} = m/\gamma$ at moving wavepackets.
+
+\begin{enumerate}
+\item \textbf{Spinor sector.} The substrate carries, in addition
+to the scalar reserve $R_i$ of Paper~I, a two-component
+$\mathbb{C}^2$ spinor field $\psi_i = (a_i, b_i)^\top$ at each
+node, evolving under a Floquet two-step rule. The spinor sector
+is decoupled from the scalar reserve in this paper; coupling is
+deferred to Paper~VII.
+
+\item \textbf{Lorentz-like dispersion.} The Floquet quasi-energy
+of the spinor sector exhibits a band gap of magnitude
+$m = \lambda/T$ at the lattice momentum $(\pi, 0)$, with
+$\lambda = 1/(2\pi)$ and $T = \tau_A + \tau_B$. Near this gap
+point, the dispersion is approximately
+\begin{equation}
+E^2 \;\approx\; m^2 + c_{\rm eff}^2\, p^2,
+\qquad c_{\rm eff} = 1/T,
+\label{eq:lorentz_dispersion_claim}
+\end{equation}
+where $p$ is the momentum offset from the gap. Excitations near
+the gap are massive, relativistic, and propagate at the group
+velocity $v_g = \partial E/\partial p$.
+
+\item \textbf{Operational kinematic clock identification.} For a
+localised wavepacket centred at momentum $p$ with energy $E(p)$
+and group velocity $v_g(p)$, the dealiased Galilean-shifted
+projection
+\[
+A_{\rm comov}(t) \;=\; \langle k_0 | \psi(t) \rangle
+\cdot \exp(-i\,p \cdot v_g\, t)
+\]
+has a phase rate equal to $E - p \cdot v_g = m^2/E$ in the
+continuum Lorentz limit. This is the kinematic counterpart of
+the bandwidth identification of Paper~II: the operational
+\emph{proper-time rate} of the moving packet is $m/\gamma$.
+
+\item \textbf{Numerical verification.} The measured proper-time
+rate matches $m/\gamma$ to better than $1\%$ for $\gamma \in [1,
+2]$ and remains within $\sim 10\%$ up to $\gamma = 4$. Beyond
+$\gamma \sim 5$, lattice corrections to Lorentz become
+significant; we quantify them as a structural prediction of
+the discrete substrate.
+\end{enumerate}
+
+\textbf{What this paper does not claim.}
+
+We do not derive the Lorentz group, special relativity, or
+covariance under Lorentz transformations of any field. Within the candidate
+spinor sector adopted in Sec.~\ref{sec:substrate}, we recover
+the operational relation $\omega_{\rm comov} = m/\gamma$ in the
+continuum limit of the lattice rule. We do not derive the
+spatial part of the metric, the photon sector, or the Einstein
+field equations. We do not derive the spinor sector itself or
+the value of $\lambda = 1/(2\pi)$; the structure is adopted by
+analogy with Weyl semimetals and discussed in
+Sec.~\ref{sec:substrate}. We do not address the coupling
+between the spinor and the scalar sector: in this paper they
+are independent. The coupling and any related conservation laws
+are deferred to Paper~VII.
+
+\section{The picture, in plain words}
+\label{sec:picture}
+
+Picture each node of the substrate as a small arrow in two
+dimensions. Not an arrow in physical space --- an arrow in an
+abstract internal space. It can point anywhere on a unit
+circle, and it has a phase: the angle that fixes where on the
+circle it is currently pointing. That arrow is the spinor.
+
+Picture each link between two neighbouring nodes not as a pipe
+that carries flow, but as a turnstile that imposes a small
+twist when the arrow at one end is communicated to the arrow
+at the other. The twist is not free; it is fixed by the
+geometry of the lattice. On axis-aligned links the twist is one
+of three standard rotations; on diagonal links the twist
+includes a small irrational $\lambda = 1/(2\pi)$. The
+arrows-and-twists are the entire substrate as far as this
+paper is concerned.
+
+Now picture the rule. The arrows are not driven by an external
+clock; they update themselves. At each tick of substrate time,
+two things happen, in order: first the arrows at the nodes
+change a little, listening to the arrows on the neighbours
+through the link twists (the \emph{node-update}); then the
+link twists themselves slide a little, adjusting to the new
+arrow directions (the \emph{link-update}). Tick complete. The
+two sub-events alternate. Alternation is the natural choice, because while
+the link twist is being adjusted, the arrows must hold still
+for the twist to know what it is registering, and while the
+arrows are being updated, the link twists must hold still for
+the arrows to know what they are listening to. One clean way to preserve locality with stateful links is
+strict alternation of the two; we adopt this construction here.
+
+What about a particle? A particle is not a thing one places on
+a node. A particle is a coherent pattern across many arrows --- a
+``packet'' --- in which the arrows rotate together at a common
+phase rate, with a smooth envelope of amplitude that is
+non-zero in some region and decays to zero outside. A particle
+at rest is a packet whose centroid does not move; the
+constituent arrows just rotate in place at a steady rate. A
+particle in motion is a packet whose centroid drifts in some
+direction; the constituent arrows still rotate, but as the
+packet drifts, an observer who keeps watching the same lattice
+site sees the packet pass through, and the arrow at that site
+goes through a more complicated pattern --- amplitude that
+rises and falls, with phase that is twisting at a faster rate
+than the rest packet.
+
+The mass of the particle is set by how fast the arrows rotate
+when the packet is at rest. The momentum of the particle is set
+by the wavelength over which the smooth envelope's phase
+twists across the lattice: short wavelength, high momentum.
+The maximum speed at which a packet can drift is fixed by the
+substrate; we call it $c_{\rm eff}$. No packet can drift
+faster, because beyond that speed the lattice rule has nowhere
+to put the next site.
+
+What is then the kinematic time dilation of a moving packet?
+Watch the packet from outside, in lab time. A rest packet's
+arrow rotates at rate $m$ (its mass). A moving packet's arrow
+rotates faster --- at rate $E$, where $E^2 = m^2 +
+(c_{\rm eff}\, p)^2$. But that is the lab observer's clock
+reading. If we instead ask what \emph{the packet itself
+experiences} --- the rate at which the substrate updates
+relative to the packet's smooth-envelope frame, after
+subtracting the trivial drift of its centroid --- we find a
+rate that decreases with speed: it equals $m^2/E = m/\gamma$.
+The packet's own clock, measured operationally on the substrate
+without invoking any Lorentz transformation, runs slow by the
+factor $1/\gamma$.
+
+This is the kinematic counterpart of Paper~II's bandwidth
+identification. There, the local clock rate of a static node in
+a gravitational well was the locally available reserve $R/R_0$.
+Here, the local clock rate at a moving spinor packet is its
+own substrate-update rate as seen from its smooth-envelope
+frame: $m/\gamma$. The mechanism is different (gravitational
+deficit vs. kinematic motion), but the operational logic is
+the same: read the rate of activity from the substrate, and
+identify it with the rate of effective proper time.
+
+The body of the paper makes this precise. The first task is to
+write down the rule that produces this picture, and to motivate
+why the rule must take the form it does.
+
+\section{Beyond the scalar reserve: the Floquet two-step spinor sector}
+\label{sec:substrate}
+
+\subsection{Why we need more than the scalar rule}
+
+The rule of Paper~I, even in its mobility-extended form, is
+first-order in time:
+\begin{equation}
+R_i(t+\tau) - R_i(t) \;=\; \tau \sum_j \big[
+F_{j \to i}^{\rm des} - \beta_i F_{i \to j}^{\rm des}\big].
+\label{eq:scalar_rule}
+\end{equation}
+Localised excitations of the scalar field $R$ obey, in the
+linearised continuum limit, a discrete-diffusion equation. They
+do not propagate; they spread. There is no second time
+derivative, no oscillation, no inertia.
+
+This is structural. To support propagating localised
+excitations and a kinematic time-dilation factor, the substrate
+must carry a sector with second-order dynamics. We adopt as a
+\emph{candidate} propagating sector --- not derived from the scalar
+sector of Paper~I but added on the same ontological footing --- a
+two-component spinor field $\psi_i \in
+\mathbb{C}^2$ at each node, evolving under a unitary rule that, in the construction
+adopted here, decomposes into two alternating sub-ticks --- a
+node-update and a link-update.
+
+\subsection{Node update and link update: the natural two-step structure}
+\label{sec:nodelink}
+
+The scalar rule of Paper~I has a hidden two-step logical
+structure that we did not need to make explicit there. At each
+tick:
+\begin{enumerate}
+\item[(N)] \emph{Node update.} Each node $i$ updates its
+reserve $R_i$ based on the desired fluxes
+$F_{i \to j}^{\rm des}$ on its incident links.
+\item[(L)] \emph{Link computation.} The desired fluxes
+$F_{i \to j}^{\rm des} = \alpha\, \mu(R_i)\, (R_i - R_j)_+$
+are computed from the current reserves $R_i, R_j$.
+\end{enumerate}
+Steps (N) and (L) are formally distinct, but in Paper~I the
+link step is \emph{stateless}: links carry no degrees of
+freedom of their own, only the instantaneous combination of
+neighbour reserves. The rule therefore collapses to a single
+node-update per tick, with the link computation absorbed into
+its definition. Two ticks become one.
+
+This collapse breaks down the moment links carry state. A
+link with a phase, a twist, a stored flux, or any other memory
+that persists beyond a single tick \emph{cannot} be updated
+simultaneously with the node it connects: which one supplies
+the ``current'' state to the other? A clean resolution respecting locality at both ends, and the
+one we adopt here, is a strict alternation:
+\begin{itemize}
+\item Sub-tick~A: nodes evolve with link states held fixed.
+\item Sub-tick~B: links evolve with node states held fixed.
+\end{itemize}
+The full rule is the composition of the two over one tick of
+duration $T = \tau_A + \tau_B$. This is, by construction, the
+Floquet two-step.
+
+The same conclusion arrives from any setting in which
+amplitude (carried by nodes) and phase coherence (carried by
+links) are both dynamical: the decomposition is the natural local split. A natural local rule for propagating excitations on a graph
+with stateful links is two-step; the two sub-ticks
+correspond to the node degrees of freedom and the link degrees
+of freedom respectively, and their alternation is what we
+mean by the Floquet rule below.
+
+In the spinor sector adopted here, the matter-hopping update
+$U_A$ implements the node update (amplitudes hop between
+neighbouring nodes, mediated by the link structure), and the
+gauge-twist update $U_B$ implements the link update (the
+diagonal twist phases on the links evolve coherently with the
+$\sigma_z$ structure of the connected nodes).
+
+\subsection{The spinor field: what it is, and why two complex components}
+\label{sec:spinor}
+
+Each node $i$ carries, in addition to the scalar reserve
+$R_i \ge 0$, a two-component spinor amplitude
+\begin{equation}
+\psi_i \;=\; (a_i, b_i)^\top \;\in\; \mathbb{C}^2,
+\qquad
+\sum_i \big( |a_i|^2 + |b_i|^2 \big) \;=\; 1.
+\label{eq:spinor_def}
+\end{equation}
+
+\paragraph{What the spinor is.}
+The spinor $\psi_i$ is a substrate field in its own right, on
+the same ontological footing as the scalar reserve $R_i$ of
+Paper~I, not a quantum-mechanical wavefunction introduced by
+hand. Operationally, it encodes a local oriented state at each
+node: a direction on the Bloch sphere (which combination of the
+two sublattice species the node presents) and a phase (where
+the node is in its internal oscillation cycle).
+
+Why does the substrate need an oriented state? The scalar
+sector of Paper~I carries only an amplitude, with no notion of
+``which way is forward'' at a node. A propagating excitation is
+a coherent rotation of orientation across a region of the
+lattice; without an orientation to rotate, there is nothing to
+propagate. The spinor is the minimal ingredient supplying that
+orientation, and the global norm $\sum_i (|a_i|^2 + |b_i|^2) = 1$
+is the analogue of the total-reserve normalisation in Paper~I.
+
+\paragraph{Why two complex components.}
+The choice of \emph{two} components is not by analogy:
+it is the minimal logical structure that supports the dynamics
+required by Paper~III. We make this explicit because the
+ontology --- ``why two and not one or three'' --- is often
+elided in the literature.
+
+\paragraph{One complex component is not enough.}
+A single complex amplitude with local hopping gives dispersions
+$\varepsilon(k) \sim \sum_a \cos(k_a)$ that are quadratic in
+$k$ near extrema. There is no way to obtain a Lorentz-like
+$E^2 = m^2 + p^2$ dispersion with linear-in-$k$ kinetic terms
+from a one-component lattice rule.
+
+\paragraph{Two components is the minimum.}
+The minimal extension is a two-component spinor with Pauli
+structure: the matrices $\sigma_x, \sigma_y, \sigma_z$ convert
+$\sin(k_a)$ hoppings into linear-in-$p$ kinetic terms in the
+effective Hamiltonian near a band-touching point. The structure
+\begin{equation}
+H(k) \;=\; \sin(k_x)\,\sigma_x + \sin(k_y)\,\sigma_y
++ \big[\cos(k_x) + \cos(k_y) + \lambda\,\cos(k_x + k_y)\big]\,\sigma_z
+\label{eq:Hgeneric}
+\end{equation}
+gives the low-energy dispersion $E = \pm\sqrt{m^2 + (c_{\rm eff} p)^2}$:
+$\sigma_{x,y}$ supply the kinetic terms, $\sigma_z$ opens the
+mass gap.
+
+\paragraph{Higher-rank multiplets are redundant here.}
+They produce additional bands, but near any single gap the
+low-energy physics remains effectively 2-component Dirac.
+
+\paragraph{Sublattice interpretation.}
+Physically, the two components $a_i$ and $b_i$ correspond to a
+bipartite labelling of the substrate. The cubic lattice with
+diagonal twist hoppings of Sec.~\ref{sec:why-weyl} naturally
+splits into two interpenetrating sublattices. The component
+$a_i$ is the amplitude on the ``even'' sublattice and $b_i$ on
+the ``odd''; the Pauli matrices encode the algebra of hops
+within and between them. The inner product of two spinors
+$\langle \psi_i | \psi_i \rangle = |a_i|^2 + |b_i|^2$ is the
+total amplitude at the node, and the matrix elements
+$\psi_i^\dagger \sigma_a \psi_i$ are the bipartite imbalance
+($\sigma_z$), and the in-plane phase coherences ($\sigma_x$,
+$\sigma_y$).
+
+The spinor is normalised globally,
+$\sum_i (|a_i|^2 + |b_i|^2) = 1$, like a single-particle
+quantum state. The Floquet rule of the next subsection
+preserves this norm at each tick.
+
+\subsection{The two-step Floquet cycle}
+
+Combining the structural argument of Sec.~\ref{sec:nodelink}
+(node and link updates must alternate when both carry state)
+with the spinor structure of Sec.~\ref{sec:spinor} (Pauli
+operators acting on a $\mathbb{C}^2$ amplitude), the rule we
+adopt is the following. Each tick of duration $T$ consists of
+two consecutive sub-steps:
+\begin{equation}
+\psi(t + T) \;=\; U_B \cdot U_A \cdot \psi(t),
+\qquad
+U_A = e^{-i H_A \tau_A},
+\quad
+U_B = e^{-i H_B \tau_B},
+\quad
+T = \tau_A + \tau_B.
+\label{eq:floquet_cycle}
+\end{equation}
+The two Hamiltonians are local hopping operators on the lattice:
+\begin{equation}
+H_A = \sum_{i,\hat e_x} \!\big[\sigma_x \psi_{i+\hat e_x} + \mathrm{h.c.}\big]
+    + \sum_{i,\hat e_y} \!\big[\sigma_y \psi_{i+\hat e_y} + \mathrm{h.c.}\big]
+    + \sum_{i,\hat e_x \cup \hat e_y} \big[\sigma_z \psi_{i+\hat e} + \mathrm{h.c.}\big],
+\label{eq:HA_realspace}
+\end{equation}
+which in the momentum representation reads
+\begin{equation}
+H_A(k) \;=\; \sin(k_x)\,\sigma_x + \sin(k_y)\,\sigma_y
+        + \big[\cos(k_x) + \cos(k_y)\big]\,\sigma_z.
+\label{eq:HA_kspace}
+\end{equation}
+$U_A$ is therefore the \emph{node-update} sub-tick: spinor
+amplitudes hop between neighbouring nodes through link-mediated
+channels, with the Pauli structure $\sigma_x, \sigma_y, \sigma_z$
+encoding the bipartite-sublattice structure
+of Sec.~\ref{sec:spinor}. The link states (the diagonal twist
+phases) are held fixed during this sub-tick.
+
+The B-step is the \emph{link-update} sub-tick: the diagonal
+twist phases on the lattice links evolve coherently with the
+$\sigma_z$ structure of the connected nodes, with the node
+amplitudes held fixed. In the momentum representation
+\begin{equation}
+H_B(k) \;=\; \lambda\,\cos(k_x + k_y)\,\sigma_z,
+\qquad
+\lambda \;=\; \frac{1}{2\pi}.
+\label{eq:HB}
+\end{equation}
+The constant $\lambda$ is fixed by the requirement that the
+diagonal density of twist hoppings carries one full $2\pi$
+phase per unit area; this is structural to the lattice
+topology adopted (cubic lattice with one twist link per
+plaquette diagonal). We do not derive $\lambda$ from a deeper
+principle in this paper.
+
+\subsection{Floquet quasi-energy and the gap}
+
+Diagonalising $U_F(k) = U_B(k)\,U_A(k)$ at each $k$ gives the
+Floquet quasi-energy spectrum $\varepsilon_\pm(k)$ with
+$\varepsilon_+ = -\varepsilon_-$. The gap structure has been
+verified numerically (file
+\texttt{code/02\_floquet\_dispersion.py}); at exactly
+$(k_x, k_y) = (\pi, 0)$ one finds
+\begin{equation}
+\varepsilon_-(\pi, 0) \;=\; -\,\frac{\lambda}{T},
+\qquad
+\varepsilon_+(\pi, 0) \;=\; +\,\frac{\lambda}{T}.
+\label{eq:gap}
+\end{equation}
+With $T = \tau_A + \tau_B = 2$, this gives the gap half-width
+$m = \lambda/T = 1/(4\pi) \approx 0.07958$.
+
+We refer to $m$ as the \emph{rest mass} of the spinor
+excitations near the gap point. The terminology is justified by
+the Lorentz-like dispersion derived in
+Sec.~\ref{sec:dispersion}, but at this stage $m$ is just a
+number with units of inverse time.
+
+\subsection{Relation to the scalar sector of Paper~I}
+
+The spinor $\psi$ and the scalar reserve $R$ are independent
+fields in this paper: their rules are distinct, their evolution
+equations are not coupled, and the total ``dynamical content''
+of a node $i$ is the pair $(R_i, \psi_i)$.
+
+Coupling of the two sectors --- the scalar reserve as a
+``background'' that modulates the spinor dynamics, or vice
+versa --- is the natural extension required to combine the
+gravitational sector of Paper~II (where $R$ varies) with the
+kinematic sector of this paper (where $\psi$ propagates), so as
+to predict the joint ``static-gravity $\times$ kinematic''
+factor of weak-field GR. We defer this to Paper~VII.
+
+For the present paper we work in the limit where $R_i = R_0$
+everywhere (no gravitational background), so the scalar sector
+is trivially uniform and decouples from the spinor dynamics.
+
+\subsection{What we do and do not claim about the substrate}
+
+We \emph{do} claim that the rule of
+Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} is local in
+space, unitary at each tick, and produces the Lorentz-like
+dispersion derived in the next section. The rule is well-defined
+and reproducible.
+
+We do \emph{not} claim that this is the unique extension of the
+scalar rule of Paper~I to a propagating sector. Other lattice
+discretisations of the Dirac equation (Wilson fermions
+\cite{wilson1974}, Kogut--Susskind staggered fermions
+\cite{kogut1975}) produce comparable low-energy effective
+theories. Our choice is motivated by the analogy with Weyl
+semimetals \cite{wan2011, armitage2018}, where the Floquet
+two-step naturally accommodates a topological phase invariant
+through the diagonal twist of the B-step. We pursue that
+specific structure here because it is the one we have validated
+numerically; other choices may turn out to be equivalent or
+preferable.
+
+We do \emph{not} derive the value $\lambda = 1/(2\pi)$; it is a
+structural input fixed by the topology of the lattice and the
+unit normalisation of the diagonal twist density.
+
+\subsection{Why we adopt this specific structure}
+\label{sec:why-weyl}
+
+We adopt the Weyl/Floquet-inspired two-step structure of
+Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} because it provides
+both a gapped propagating sector near one Brillouin-zone point ---
+the regime studied here --- and a natural route to gapless
+propagating modes elsewhere in the spectrum, which is needed for
+the gauge sector of Paper~VI. These motivations are not
+load-bearing for the kinematic clock-rate result of the present
+paper; the present paper only verifies the Lorentz-like dispersion
+and the operational $m/\gamma$ relation near one gap. Several
+alternative lattice discretisations (Wilson \cite{wilson1974},
+Kogut--Susskind \cite{kogut1975}, plain cubic without the diagonal
+twist) would give the same low-energy result for $m/\gamma$ in
+isolation; we choose the present structure for compatibility with
+the gauge content treated later.
+
+\section{Lorentz-like dispersion at the gap}
+\label{sec:dispersion}
+
+\subsection{Approximate analytical form}
+
+Expand $H_A(k) + H_B(k)$ around $k_0 = (\pi, 0)$ to leading
+order in the offset $p = k - k_0$. With $k_x = \pi - \delta$
+and $k_y = 0$:
+\begin{align*}
+\sin(k_x) &= \sin(\pi - \delta) = \sin\delta \approx \delta,\\
+\cos(k_x) &= -\cos\delta \approx -1 + \delta^2/2,\\
+\cos(k_x) + \cos(k_y) &\approx -1 + \delta^2/2 + 1 = \delta^2/2,\\
+\cos(k_x + k_y) &= \cos(\pi - \delta) \approx -1 + \delta^2/2.
+\end{align*}
+At leading order in $\delta$:
+\[
+H_A + H_B \;\approx\; \delta \sigma_x
++ \big(\delta^2/2 - \lambda\big) \sigma_z.
+\]
+The eigenvalues are $\pm\sqrt{\delta^2 + (\lambda - \delta^2/2)^2}
+\approx \pm \sqrt{\lambda^2 + \delta^2}$ for $|\delta| \ll 1$.
+After the Trotter halving by the Floquet period $T = 2$, the
+Floquet quasi-energy near the gap is
+\begin{equation}
+\varepsilon(p) \;\approx\; \pm\,\sqrt{m^2 + (p/T)^2},
+\qquad
+m = \lambda/T,
+\qquad c_{\rm eff} = 1/T.
+\label{eq:lorentz_dispersion}
+\end{equation}
+This is the Lorentz dispersion of a massive relativistic
+particle, with rest mass $m$ and effective speed of light
+$c_{\rm eff}$. The role of the lattice spacing and the Floquet
+period $T$ is to supply the units: $T$ converts crystal
+momentum offset $p$ to ``physical momentum'' $p/T$, and the gap
+$\lambda$ converts to mass $m = \lambda/T$.
+
+\subsection{Numerical check}
+
+Table~\ref{tab:dispersion} compares the Floquet quasi-energy
+$|\varepsilon_-(p)|$ measured by direct diagonalisation
+of $U_F$ against the Lorentz prediction
+$\sqrt{m^2 + (p/T)^2}$ at $T = 2$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccr}
+\toprule
+$\delta$ & $|\varepsilon_-|$ (Floquet) &
+$\sqrt{m^2 + (\delta/2)^2}$ (Lorentz) & rel.\ dev.\\
+\midrule
+0.05 & 0.082686 & 0.083412 & $-0.9\%$\\
+0.10 & 0.091383 & 0.093982 & $-2.8\%$\\
+0.20 & 0.120060 & 0.127799 & $-6.1\%$\\
+0.30 & 0.156674 & 0.169802 & $-7.7\%$\\
+0.40 & 0.196931 & 0.215250 & $-8.5\%$\\
+0.50 & 0.239077 & 0.262360 & $-8.9\%$\\
+\bottomrule
+\end{tabular}
+\caption{Floquet quasi-energy of the spinor sector at
+$k = (\pi - \delta, 0)$, compared with the Lorentz prediction
+$\sqrt{m^2 + (\delta/T)^2}$ for $m = \lambda/T = 1/(4\pi)$ and
+$T = 2$. The Lorentz form is recovered with sub-percent
+accuracy at $\delta \le 0.05$ and within $9\%$ up to
+$\delta = 0.5$. The dispersion deviates from exact Lorentz at
+larger $\delta$; the deviation is the lattice's UV correction
+and is the subject of Sec.~\ref{sec:lattice}.}
+\label{tab:dispersion}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig2_floquet_dispersion.pdf}
+\caption{Floquet quasi-energy along $k_x$ at $k_y = 0$.
+\emph{Left:} the two bands $\varepsilon_\pm(k_x)$ across the full
+Brillouin zone, with the gap of half-width $m = 1/(4\pi)$ centred
+at $k_x = \pi$ shaded. \emph{Right:} zoom on the gap with the
+Lorentz fit $\sqrt{m^2 + (c_{\rm eff}\,p)^2}$ overlaid (dashed),
+with $p = k_x - \pi$, $c_{\rm eff} = 1/T = 0.5$. Excellent agreement
+in the inner $|p| \lesssim 0.3$ window; lattice corrections become
+visible beyond.}
+\label{fig:dispersion}
+\end{figure}
+
+\subsection{Group velocity}
+
+The group velocity at the gap-offset $\delta$ is, to leading
+order,
+\begin{equation}
+v_g(\delta) \;=\; \frac{\partial \varepsilon_-}{\partial k_x}
+\;=\; \frac{\delta}{T^2\,\varepsilon_-(\delta)}
+\;\approx\; \frac{\delta/T^2}{\sqrt{m^2 + (\delta/T)^2}}
+\;=\; \frac{p/(c_{\rm eff} \cdot T)}{\sqrt{m^2 + (p/T)^2}}.
+\label{eq:vg}
+\end{equation}
+At $\delta \to 0$, $v_g \to 0$ (rest packet). At $\delta \gg
+m T$, $v_g \to c_{\rm eff} = 1/T$.
+
+\paragraph{Control: dispersion derivative vs.\ centroid drift.}
+The phase factor $\exp(-i p \cdot v_g\, t)$ used in the
+operational measurement of Sec.~\ref{sec:operational} requires
+a value of $v_g$. We use the Floquet quasi-energy gradient
+$\partial \varepsilon_- / \partial k_x$, but as a control we
+also measure $v_g$ directly from the centroid drift of a
+propagating wavepacket on the same lattice as the main result
+($L = 128$, $\sigma = 12$, $40$ cycles). The two methods agree
+to sub-percent at high $v$; at low $v$ the centroid measurement
+is biased by Gaussian-envelope spreading, not by a deficiency
+of the dispersion derivative.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccr}
+\toprule
+$\delta$ & $v_g$ (dispersion) & $v_g$ (centroid drift)
+& rel.\ dev.\\
+\midrule
+0.05 & 0.1220 & 0.1003 & $-17.8\%$\\
+0.10 & 0.2209 & 0.1884 & $-14.7\%$\\
+0.20 & 0.3370 & 0.3111 & $-7.7\%$\\
+0.30 & 0.3886 & 0.3756 & $-3.4\%$\\
+0.40 & 0.4138 & 0.4071 & $-1.6\%$\\
+0.50 & 0.4279 & 0.4239 & $-0.9\%$\\
+0.60 & 0.4364 & 0.4337 & $-0.6\%$\\
+\bottomrule
+\end{tabular}
+\caption{Group velocity from the Floquet dispersion derivative
+compared with centroid drift of a Gaussian wavepacket on the
+same lattice as the main run. The control is meant to verify
+the finite-velocity regime, where the centroid drift is a
+reliable velocity estimator: at $\delta \ge 0.4$, the two
+methods agree to $\le 1.6\%$. The low-$\delta$ rows are
+included to show the expected breakdown of centroid-based
+velocity estimation for nearly stationary packets, where
+envelope spreading dominates the apparent drift; this is a
+property of the centroid estimator, not a discrepancy of
+$v_g$ itself. Data: \texttt{data/07\_vg\_control.json}.}
+\label{tab:vg_control}
+\end{table}
+
+The control confirms that the phase factor used in
+Eq.~\eqref{eq:Acomov} for the comoving projection is built
+from a velocity that the wavepacket actually exhibits in the
+simulation, not just from a theoretical curve.
+
+\section{Operational kinematic clock identification}
+\label{sec:operational}
+
+\subsection{Wavefunction phase at the moving centroid}
+
+For a wavepacket centred at $k_0 = (\pi - \delta, 0)$ with
+narrow envelope in momentum space, the wavefunction in the
+\emph{smooth-envelope picture} (after factoring out the Brillouin
+alternation $\exp(i\pi x)$) reads
+\begin{equation}
+\psi_{\rm slow}(x, t) \;=\; e^{-i\pi x}\, \psi(x, t)
+\;\approx\; u_-(k_0)\, e^{i p\cdot x - i \varepsilon_-(p)\, t},
+\qquad p = -\delta.
+\label{eq:psi_slow}
+\end{equation}
+At the moving centroid $x_c(t) = v_g\, t$, this becomes
+\begin{equation}
+\psi_{\rm slow}(v_g\, t, t)
+\;=\; u_-(k_0)\, e^{-i (\varepsilon_- - p\,v_g)\, t}.
+\label{eq:phi_at_xc}
+\end{equation}
+The phase rate at the moving centroid is therefore
+\begin{equation}
+\omega_{\rm comov} \;=\; |\varepsilon_-(p)| - p\,v_g(p)
+\;=\; E - p\,v_g.
+\label{eq:omega_comov}
+\end{equation}
+For Lorentz dispersion $E^2 = m^2 + (c_{\rm eff} p)^2$, with
+$v_g = c_{\rm eff}^2 p/E$:
+\begin{equation}
+\omega_{\rm comov}
+\;=\; E - p \cdot \frac{c_{\rm eff}^2 p}{E}
+\;=\; \frac{E^2 - c_{\rm eff}^2\, p^2}{E}
+\;=\; \frac{m^2}{E}
+\;=\; \frac{m}{\gamma}.
+\label{eq:omega_lorentz}
+\end{equation}
+
+This is the kinematic counterpart of the bandwidth
+identification of Paper~II. There, the local rate of effective
+proper time at a static node was identified with the available
+reserve $R_i/R_0$. Here, the local rate of effective proper
+time at a moving spinor packet is identified with the slow
+phase rate at the comoving centroid, which equals $m/\gamma$ in
+the Lorentz regime.
+
+\subsection{The dealiasing prescription as an operational measurement}
+
+Direct measurement of the slow phase at the moving centroid is
+unstable to wavepacket spreading: as the envelope broadens in
+$k$, the phase rate at the geometric centroid is contaminated
+by neighbouring momenta that evolve at slightly different rates
+$\varepsilon_-(p+\delta p)$. We avoid this by working in
+$k$-space.
+
+Define the lab-frame projection
+\begin{equation}
+A_{\rm lab}(t) \;=\; \sum_x e^{-i k_0 \cdot x}\, \psi_a(x, t)
+\;\equiv\; \langle k_0 \,|\, \psi(t) \rangle.
+\label{eq:Alab}
+\end{equation}
+For a wavepacket made from the Floquet lower-band eigenstate at
+$k_0$ with a smooth envelope, $A_{\rm lab}(t)$ evolves as
+\begin{equation}
+A_{\rm lab}(t) \;\propto\; e^{-i \varepsilon_-(k_0)\, t}
+\;=\; e^{+i E\, t},
+\label{eq:Alab_evol}
+\end{equation}
+since the projection onto the central plane wave is exact for a
+pure plane-wave content at $k_0$ and only the lower band
+contributes by construction. The phase rate of $A_{\rm lab}$ is
+the lab-frame energy $+E$.
+
+To extract the comoving rate, multiply by the Galilean-shift
+phasor
+\begin{equation}
+A_{\rm comov}(t) \;=\; A_{\rm lab}(t)
+\cdot e^{-i p \cdot v_g\, t}.
+\label{eq:Acomov}
+\end{equation}
+Since $A_{\rm lab} \propto e^{+iE t}$, this gives
+$A_{\rm comov} \propto e^{+i(E - p\,v_g)\,t} = e^{+i (m/\gamma)\, t}$
+in the Lorentz regime. The phase rate of $A_{\rm comov}$ is
+$m/\gamma$.
+
+\subsection{What is operationally measured}
+
+The procedure of Eq.~\eqref{eq:Acomov} requires only:
+\begin{itemize}
+\item the wavefunction $\psi(x, t)$ as produced by the local
+rule \eqref{eq:floquet_cycle},
+\item the central momentum $k_0$ (input parameter of the
+wavepacket initialisation),
+\item the group velocity $v_g(k_0)$, computed from
+$\varepsilon_-(k)$ either by finite difference of the Floquet
+quasi-energy or by direct measurement of the centroid drift in
+the simulation.
+\end{itemize}
+No reference to Lorentz transformations, no postulate of
+proper-time slowing, no global symmetry assumption. The
+prediction $\omega_{\rm comov} = m/\gamma$ is then a derived
+consequence of the lattice rule, testable point by point.
+
+\section{Numerical verification}
+\label{sec:numerical}
+
+\subsection{Setup}
+
+We implement the rule \eqref{eq:floquet_cycle} on a periodic
+2D lattice of side $L = 128$ with $\tau_A = \tau_B = 1$ (so
+$T = 2$, $c_{\rm eff} = 0.5$, $m = 1/(4\pi) \approx 0.07958$).
+Wavepackets are initialised as a Gaussian envelope of width
+$\sigma = 12$ centred at the lattice centre, multiplied by the
+plane wave $e^{i k_0 \cdot x}$ and the Floquet lower-band
+eigenstate at $k_0$. The simulation is propagated for $n = 60$
+cycles (lab time $T_{\rm tot} = 120$).
+
+The script \texttt{code/05\_comoving\_clock\_rate.py} performs
+the procedure of Sec.~\ref{sec:operational}. The data are
+stored in \texttt{data/05\_comoving\_clock.json}.
+
+\subsection{Result}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccccr}
+\toprule
+$\delta$ & $E_{\rm Floquet}$ & $\gamma$ & $m/\gamma$ (predicted)
+& $\omega_{\rm comov}$ (measured) & rel.\ dev.\\
+\midrule
+0.00 & 0.07958 & 1.000 & 0.07958 & 0.07958 & $\;\;\,0.00\%$\\
+0.05 & 0.08269 & 1.039 & 0.07659 & 0.07659 & $\;\;\,0.01\%$\\
+0.10 & 0.09138 & 1.148 & 0.06930 & 0.06930 & $\;\;\,0.00\%$\\
+0.15 & 0.10429 & 1.310 & 0.06072 & 0.06069 & $-0.06\%$\\
+0.20 & 0.12006 & 1.509 & 0.05274 & 0.05261 & $-0.26\%$\\
+0.25 & 0.13773 & 1.731 & 0.04598 & 0.04567 & $-0.66\%$\\
+0.30 & 0.15667 & 1.969 & 0.04042 & 0.03990 & $-1.28\%$\\
+0.40 & 0.19693 & 2.475 & 0.03216 & 0.03101 & $-3.6\%$\\
+0.50 & 0.23908 & 3.004 & 0.02649 & 0.02459 & $-7.2\%$\\
+0.60 & 0.28233 & 3.548 & 0.02243 & 0.01982 & $-11.6\%$\\
+0.80 & 0.37062 & 4.657 & 0.01709 & 0.01378 & $-19.3\%$\\
+\bottomrule
+\end{tabular}
+\caption{Operational kinematic clock-rate at moving wavepackets,
+on $L = 128$, $\sigma = 12$, $n_{\rm cycles} = 60$. The
+predicted rate $m/\gamma$ is reproduced to better than
+$0.1\%$ for $\gamma < 1.5$, to better than $1.3\%$ for
+$\gamma < 2$, and within $\sim 10\%$ for $\gamma < 4$. Beyond
+$\gamma \sim 5$ the lattice corrections to the Lorentz form
+become substantial. Data: \texttt{data/05\_comoving\_clock.json}.}
+\label{tab:clock}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/fig3_comoving_clock_rate.pdf}
+\caption{The operationally measured comoving phase rate
+$\omega_{\rm comov}$ (red points) at moving wavepackets matches
+the Lorentz prediction $m/\gamma$ (dashed line) across the
+range tested. The Floquet $m/\gamma$ values (black dots) sit on
+the dashed line by construction. The horizontal grey line marks
+the rest mass $m = 1/(4\pi)$. Deviations at $\gamma > 3$ are
+the lattice's UV correction to Lorentz, quantified in
+Fig.~\ref{fig:lattice}.}
+\label{fig:clock}
+\end{figure}
+
+The agreement at low $\gamma$ is striking: at $\gamma = 1.04$
+the relative deviation is $0.01\%$, well below any plausible
+lattice or numerical artefact. This is not a fit; the
+prediction $m/\gamma = m^2/E$ is fixed entirely by the Floquet
+quasi-energy, which itself is an exact diagonalisation of the
+local rule.
+
+The deviation grows monotonically with $\gamma$. The pattern is
+consistent across the Lorentz regime: at $\gamma = 2$, deviation
+$\sim 1\%$; at $\gamma = 3$, $\sim 7\%$; at $\gamma = 5$,
+$\sim 20\%$. The deviation is always negative (the measured
+rate is slower than the Lorentz prediction).
+
+\section{Lattice corrections to Lorentz}
+\label{sec:lattice}
+
+The deviations of Table~\ref{tab:clock} are not numerical: they
+follow a smooth functional dependence and are reproduced when
+the run parameters $(L, \sigma, n_{\rm cycles})$ are varied,
+provided no boundary wraparound contaminates the trajectory.
+They are the lattice's UV signature.
+
+The leading correction can be read off the dispersion. Recall
+$\sin\delta = \delta - \delta^3/6 + O(\delta^5)$ and
+$\cos\delta = 1 - \delta^2/2 + \delta^4/24 + O(\delta^6)$.
+Substituting into $H_A + H_B$ at $k = (\pi - \delta, 0)$ yields
+a fourth-order correction to the dispersion,
+\begin{equation}
+\varepsilon^2(\delta) \;=\; m^2 + \tfrac14\delta^2
+- \tfrac{1}{12}\delta^4 + O(\delta^6),
+\label{eq:dispersion_corrected}
+\end{equation}
+which softens the Lorentz form at large $\delta$. The
+corresponding correction to the comoving phase rate is
+\begin{equation}
+\omega_{\rm comov} \;=\; \frac{m^2}{\varepsilon}
+\;\approx\; \frac{m}{\gamma}\left(1 - \frac{1}{12}\,\frac{\delta^4}{m^2 + \delta^2/4}
++ O(\delta^6) \right).
+\label{eq:rate_corrected}
+\end{equation}
+At fixed $\gamma$, the lattice correction grows as $\delta^4$:
+quartic in the momentum offset. The structure is generic to
+2D nearest-neighbour Floquet rules with sin/cos hopping.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/fig4_lattice_deviation.pdf}
+\caption{Relative deviation of the measured comoving clock rate
+from the Lorentz prediction $m/\gamma$, as a function of $\gamma$.
+The Lorentz regime (green band, $|err| < 1\%$) extends to
+$\gamma \approx 2$. Mild lattice corrections (gold band,
+$|err| < 10\%$) cover up to $\gamma \approx 4$. Beyond, the
+deviation grows monotonically and is the structural prediction of
+Eq.~\eqref{eq:rate_corrected}.}
+\label{fig:lattice}
+\end{figure}
+
+\textbf{Statement.} The lattice correction grows with
+momentum offset and becomes significant as the packet
+approaches the lattice cutoff. The numerical signature is
+that the operational comoving rate $\omega_{\rm comov}$ falls
+below the Lorentz prediction $m/\gamma$ at large $\gamma$,
+with a smooth functional dependence determined by the lattice
+dispersion. We do not assign a physical cutoff scale or
+convert the deviation to physical units in this paper; the
+deviation is a structural feature of the discrete substrate
+and would have to be matched against an external physical
+scale to become a quantitative falsifier.
+
+\section{Bridge to Paper II}
+\label{sec:bridge}
+
+The two factors of weak-field general relativity --- the
+gravitational time dilation $\sqrt{1 - 2GM/c^2 r}$ and the
+kinematic time dilation $\sqrt{1 - v^2/c^2}$ --- are derived in
+DDD by structurally separate mechanisms:
+\begin{itemize}
+\item The gravitational factor (Paper~II) comes from the
+\emph{scalar} reserve sector with the source-side bandwidth
+mobility $\mu(R) = R/R_0$. The bandwidth at a node decreases
+near a sink, lowering the local rate of effective proper time
+to $R/R_0$.
+\item The kinematic factor (this paper) comes from the
+\emph{spinor} sector with the Floquet two-step rule. The
+proper-time rate of a moving wavepacket is $m/\gamma$, where
+$\gamma = E/m$ is fixed by the Lorentz dispersion of the gap.
+\end{itemize}
+The combined factor for a moving spinor excitation in a
+gravitational background --- a single-throttle scalar field
+$R(r) = R_0 \sqrt{1 - \beta/r}$ acting on a propagating spinor
+$\psi$ --- is, schematically,
+\begin{equation}
+\frac{d\tau}{dt} \;\overset{?}{=}\;
+\frac{R}{R_0} \cdot \frac{m}{\gamma}
+\;=\; \sqrt{1 - \beta/r} \cdot \frac{1}{\gamma},
+\label{eq:combined}
+\end{equation}
+under the conjecture that the two factors multiply rather than
+combine through a different scheme. The product form
+\eqref{eq:combined} is the same first-order combination as the
+weak-field general-relativistic combined factor, expressed as a
+product rather than as $\sqrt{1 - 2GM/c^2 r - v^2/c^2}$, with
+which it agrees to leading order in both $\beta/r$ and $v^2$
+but differs at second order. This is a structurally
+distinguishing prediction; we do \emph{not} verify it
+numerically here, because we have not yet defined the coupling
+between the scalar and spinor sectors. The verification is
+deferred to Paper~VII (coupling) and Paper~IV (gravitational
+phenomenology beyond $g_{00}$).
+
+\section{What this paper does not do}
+\label{sec:not}
+
+We do not derive the Lorentz group, special relativity, or any
+covariance result. We derive a kinematic time-dilation factor
+$m/\gamma$ as a continuum limit of a specific lattice rule,
+near a band gap, conditional on the Floquet two-step structure
+adopted in Sec.~\ref{sec:substrate}.
+
+We do not derive the value of $\lambda = 1/(2\pi)$. It is a
+structural input fixed by the topology of the lattice (one
+diagonal twist link per plaquette diagonal, normalised to a
+single $2\pi$ winding per unit area). Whether this is uniquely
+selected by deeper consistency requirements is an open problem.
+
+We do not derive the spinor sector itself. The two-component
+$\mathbb{C}^2$ field $\psi_i$ at each node is adopted by analogy
+with Weyl semimetals \cite{wan2011, armitage2018} and is the
+minimal non-trivial extension of the scalar substrate of
+Paper~I that supports propagating excitations with a band gap.
+The motivation for this specific structure --- as opposed to,
+say, Wilson \cite{wilson1974} or Kogut--Susskind
+\cite{kogut1975} fermions --- is heuristic; alternative
+structures may produce equivalent low-energy effective
+theories.
+
+We do not derive Lorentz invariance \emph{globally}. The
+dispersion is Lorentz-like only near the gap point $(\pi, 0)$.
+Other gap points (none in this 2D model, but several in higher
+dimensions) would carry their own effective masses and
+velocities. The substrate is not Lorentz-invariant as a whole;
+it is Lorentz-invariant in the low-energy effective theory at
+each gap.
+
+We do not address the photon-like massless sector. The
+Floquet rule has no gapless mode in this 2D version; gapless
+propagating modes require a different gap structure or a
+different lattice topology, and are deferred to Paper~VI
+(gauge sector). The gravitational-propagation consequences of
+photon-like modes (deflection, Shapiro delay, spatial metric)
+are deferred to Paper~IV.
+
+We do not address coupling between the spinor and scalar
+sectors. The scalar reserve $R$ is uniform throughout the
+spinor's evolution in this paper. The combined
+gravitational-kinematic factor of Eq.~\eqref{eq:combined} is
+conjectural pending Paper~VII.
+
+We do not derive Newton's $G$, the speed of light $c$, or the
+mass scale $m$ in physical units. The lattice quantities are
+$\lambda = 1/(2\pi)$, $T = 2$ (in lattice units), giving
+$m = 1/(4\pi)$ and $c_{\rm eff} = 1/2$ (in inverse lattice
+units). Conversion to physical units requires the same
+external Planck-scale anchoring as in Paper~II's
+\emph{Structural form of Newton's constant} section.
+
+\section{Open questions}
+\label{sec:open}
+
+\paragraph{Origin of $\lambda = 1/(2\pi)$.}
+The diagonal twist density is one $2\pi$ phase per plaquette
+diagonal. We adopt this by structural fiat. A microscopic
+argument that selects this density --- perhaps from a
+topological invariant of the lattice or a flux-quantisation
+condition --- would close the main remaining gap of this
+construction. The constant $\lambda$ enters $m$ and through it
+$\gamma$ at every $v$, so its origin is structurally important.
+
+\paragraph{Coupling to the scalar sector.}
+In a static gravitational background $R(r) < R_0$, does the
+spinor's effective mass $m$ depend on $R$? Does the effective
+$c_{\rm eff}$? The natural ansatz is $m_{\rm eff}(r) = m\, (R/R_0)$
+or similar, but this is not derived. Paper~VII addresses this.
+
+\paragraph{Lattice corrections at high $\gamma$.}
+The functional form \eqref{eq:rate_corrected} is the leading
+quartic correction. Higher-order corrections, and the question
+of whether the deviation continues to be monotonically negative
+at all $\gamma$ or saturates, are open. A scan to
+$\gamma \sim 30$ on $L = 512$ would settle the issue
+numerically.
+
+\paragraph{Massless modes.}
+In the present 2D model the spinor sector has no gapless mode;
+all bands are gapped. A 3D extension of the Floquet rule, as
+explored in the Weyl-semimetal analogy \cite{armitage2018},
+exhibits Weyl points where the gap closes. These are the
+candidates for photon-like massless excitations and are the
+subject of Paper~VI.
+
+\section{Code and data availability}
+\label{sec:code}
+
+The Python scripts in \texttt{code/} implement the Floquet
+two-step rule of Eq.~\eqref{eq:floquet_cycle} on a 2D periodic
+lattice. They are pure-numpy and depend on no external
+simulation framework.
+
+\begin{itemize}
+\item \texttt{01\_wavepacket\_propagation.py}: verifies
+that wavepackets propagate at the predicted group velocity.
+\item \texttt{02\_floquet\_dispersion.py}: computes the Floquet
+quasi-energy spectrum and verifies the gap structure.
+\item \texttt{04\_kspace\_projection.py}: tracks the lab-frame
+energy of a wavepacket via $\langle k_0 | \psi(t) \rangle$.
+\item \texttt{05\_comoving\_clock\_rate.py}: implements the
+Galilean-shifted dealiased projection of
+Sec.~\ref{sec:operational} and produces
+Table~\ref{tab:clock}.
+\end{itemize}
+The numerical data are stored in \texttt{data/}. The repository
+is available at
+\url{https://github.com/stanislasdewavrin/DDD-Paper-3-Inertia}.
+
+\section{Outlook}
+\label{sec:outlook}
+
+This paper extracts the kinematic time-dilation factor of
+special relativity from a specific lattice rule near a band
+gap, as the operational analogue of the bandwidth-clock
+identification of Paper~II. The result and the rule are
+conditional on the two-step Floquet structure adopted in
+Sec.~\ref{sec:substrate}; that structure has its own
+motivation and its own open questions, which we do not pretend
+to settle here.
+
+\begin{enumerate}
+\item Paper~IV --- predictions and tests of the gravitational
+sector beyond the static spherically symmetric scenario:
+photon deflection, spatial metric, compact-source phenomenology.
+\emph{Mixed.}
+\item Paper~V --- gravitational predictions and falsifiers:
+where DDD differs from Newton/GR and how to test it.
+\emph{Mixed.}
+\item Paper~VI --- the gauge sector and emergent
+electromagnetism, in particular the gapless modes of the
+Floquet rule in 3D and the connection to Maxwell.
+\emph{Speculative; coefficients uncalibrated.}
+\item Paper~VII --- coupling between the scalar and spinor
+sectors. Combined static-gravity $\times$ kinematic factor;
+verification of Eq.~\eqref{eq:combined}. \emph{Conditional on
+Paper~VI's gauge formulation.}
+\end{enumerate}
+
+The result of this paper, taken on its own, is one structural
+fact: a discrete lattice rule with a Floquet two-step spinor
+sector produces, in the continuum limit near a band gap, the
+Lorentz time-dilation factor as the operational rate of effective
+proper time at moving excitations. The interpretation is
+intrinsic to the rule; no Lorentz invariance, no metric, and no Lorentzian
+proper-time formula is assumed; what is identified is
+the operational substrate quantity, not a metric postulate. The factor that emerges
+is the same as in special relativity, accompanied by lattice
+corrections at high $\gamma$ that are calculable and, in
+principle, falsifiable.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

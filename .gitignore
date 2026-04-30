@@ -1,0 +1,28 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Truncated intermediate versions (cleanup artefacts)
+paper_v*.tex
+paper_v*.pdf
+paper_new.*
+paper_tmp.*
+paper_check.*
+references.bib.tmp
+
+# Python artefacts
+__pycache__/
+*.pyc
+*.pyo
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+desktop.ini
