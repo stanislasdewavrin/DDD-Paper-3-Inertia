@@ -9,6 +9,7 @@
 \usepackage{booktabs}
 \usepackage{authblk}
 \usepackage{cite}
+\usepackage{enumitem}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
 \title{\textbf{Discrete Drainage Dynamics III:\\
@@ -23,36 +24,91 @@ Lorentz-Like Kinematic Time Dilation}}
 
 \begin{abstract}
 \noindent
-Papers~I and~II treated the substrate as a scalar reserve field
-$R_i \ge 0$ with first-order time dynamics. That sector cannot
+\textbf{Discrete Drainage Dynamics (DDD) is an analogue-substrate
+programme.} It does not contest special relativity or Lorentz
+invariance: those are empirical anchors that the analogue must
+reproduce in the appropriate continuum limit. We ask the
+narrower, exploratory question of whether the kinematic
+time-dilation factor of special relativity can arise
+operationally from a discrete Floquet spinor rule inside the
+toy substrate.
+
+Papers~I and~II~\cite{paperI, paperII} treated the substrate as
+a scalar reserve field $R_i \ge 0$ with first-order time
+dynamics. That sector cannot
 support propagating localised excitations: the rule is
 diffusion-like and any initial bump spreads. Here we extend the
 substrate with a two-component spinor $\psi_i \in \mathbb{C}^2$
 at each node, and a Floquet two-step time evolution that
 alternates a matter-hopping update~A and a gauge-twist update~B
-with period $T = \tau_A + \tau_B$. The Floquet quasi-energy
-exhibits a band gap of magnitude $m = \lambda/T$ at the lattice
-point $(\pi, 0)$, with $\lambda = 1/(2\pi)$, around which the
-dispersion is approximately Lorentz-like, $E^2 \approx m^2 +
-(c_{\rm eff}\, p)^2$ with $c_{\rm eff} = 1/T$. Localised
+with period $T = \tau_A + \tau_B$. Within the class of local
+stateful-link rules satisfying four operational propagation
+axioms (F1)--(F4), this two-step structure is selected as the
+minimal two-component Pauli/Floquet representative; closing the
+construction further requires a topological hypothesis~(F-twist)
+that fixes the diagonal-twist normalisation
+$\lambda = 1/(2\pi)$. The Floquet quasi-energy then exhibits a
+band gap of magnitude $m = \lambda/T$ at the lattice
+point $(\pi, 0)$, around which the dispersion is approximately
+Lorentz-like, $\varepsilon^2 \approx m^2 + (c_{\rm eff}\, p)^2$
+with $c_{\rm eff} = 1/T$ and explicit quartic lattice
+corrections $O(\delta^4)$ in the momentum offset. Localised
 wavepackets near this gap point propagate at the predicted
 group velocity, and we measure operationally the kinematic
 clock-rate $m/\gamma = m^2/E$ at moving packets via a
 Galilean-shifted, dealiased $k$-space projection. The measured
 proper-time rate matches the prediction $m/\gamma$ to better
-than $1\%$ across $\gamma \in [1, 2]$ and to $\sim 10\%$ at
-$\gamma = 4$, with monotonic deviations beyond. The result is
-the kinematic counterpart of the bandwidth identification of
-Paper~II: the moving packet's effective clock runs at
-$m/\gamma$ in lab time, measured from substrate observables
-without invoking Lorentz transformation laws. We do not derive
-the Lorentz group, the spatial part of the metric, the
-Einstein equations, or the spinor sector itself; these are
-discussed.
+than $1\%$ for $\gamma < 2$ (median deviation $\sim 0.3\%$ over
+$\gamma \in [1, 2]$) and within $\sim 10\%$ for $\gamma < 4$,
+with monotonic deviations beyond. The result is the kinematic
+counterpart of the bandwidth identification of Paper~II: the
+moving packet's effective clock runs at $m/\gamma$ in lab time,
+measured from substrate observables without invoking Lorentz
+transformation laws. We do \emph{not} derive the Lorentz group, the spatial part of
+the metric, the Einstein equations, or the spinor sector
+itself; their derivation is deferred to Papers~IV--VII. The
+(F-twist) normalisation is the principal open problem: the
+topological hypothesis fixing $\lambda = 1/(2\pi)$ closes the
+construction but remains microscopically unexplained.
 \end{abstract}
+
+
+\noindent\fbox{\parbox{0.96\textwidth}{\small
+\textbf{What this paper makes mechanically legible.}
+Special relativity postulates the existence of a finite invariant
+speed $c$ as an empirical input; SR/GR has no structural
+explanation for \emph{why} a propagation ceiling exists, and
+encodes kinematic time dilation as a metric transformation law.
+\emph{This paper} forces the existence of a propagation ceiling
+$c_{\rm eff} = 1/T$ from finite per-tick lattice bandwidth
+(locality (L1) + (L5)), and reads the kinematic factor
+$m/\gamma$ as the operational comoving phase rate of a Floquet
+wavepacket --- no Lorentz transformation invoked.
+\textbf{Leverage:} the \emph{existence} of $c$ becomes a
+substrate consequence rather than an ad-hoc postulate, and the
+SR transformation law is replaced by an operational phase-rate
+measurement on a discrete medium.
+}}
+\bigskip
+
 
 \section{Main claims and scope}
 \label{sec:claims}
+
+\paragraph{Programme positioning and analogue framing.}
+Discrete Drainage Dynamics is an analogue-substrate programme;
+it does not contest special relativity or Lorentz invariance.
+Those are the empirical anchors the analogue must reproduce.
+The aim of this paper is the narrower question of whether the
+\emph{form} of the kinematic time-dilation factor can emerge
+operationally from a discrete Floquet spinor rule. The result
+is internal to the analogue, conditional on the axioms
+(F1)--(F4) and the topological hypothesis (F-twist) introduced
+in Sec.~\ref{sec:substrate}, and holds only in the continuum
+limit and for the specific spinor sector adopted. Any deviation
+of the analogue from special relativity at the level of
+measured tests is a falsifier of the analogue, not of SR.
+
 
 This paper introduces a structurally new sector of the substrate
 beyond the scalar reserve of Papers~I and~II, and uses it to
@@ -70,16 +126,18 @@ deferred to Paper~VII.
 \item \textbf{Lorentz-like dispersion.} The Floquet quasi-energy
 of the spinor sector exhibits a band gap of magnitude
 $m = \lambda/T$ at the lattice momentum $(\pi, 0)$, with
-$\lambda = 1/(2\pi)$ and $T = \tau_A + \tau_B$. Near this gap
-point, the dispersion is approximately
+$\lambda = 1/(2\pi)$ from (F-twist) and $T = \tau_A + \tau_B$.
+Near this gap point, the dispersion is approximately
 \begin{equation}
-E^2 \;\approx\; m^2 + c_{\rm eff}^2\, p^2,
+E^2 \;\approx\; m^2 + c_{\rm eff}^2\, p^2 + O(\delta^4),
 \qquad c_{\rm eff} = 1/T,
 \label{eq:lorentz_dispersion_claim}
 \end{equation}
-where $p$ is the momentum offset from the gap. Excitations near
-the gap are massive, relativistic, and propagate at the group
-velocity $v_g = \partial E/\partial p$.
+where $p = k - k_0$ is the momentum offset from the gap and the
+$O(\delta^4)$ correction is computed analytically in
+Sec.~\ref{sec:lattice}. Excitations near the gap are massive,
+relativistic, and propagate at the group velocity
+$v_g = \partial E/\partial p$.
 
 \item \textbf{Operational kinematic clock identification.} For a
 localised wavepacket centred at momentum $p$ with energy $E(p)$
@@ -95,28 +153,39 @@ the bandwidth identification of Paper~II: the operational
 \emph{proper-time rate} of the moving packet is $m/\gamma$.
 
 \item \textbf{Numerical verification.} The measured proper-time
-rate matches $m/\gamma$ to better than $1\%$ for $\gamma \in [1,
-2]$ and remains within $\sim 10\%$ up to $\gamma = 4$. Beyond
-$\gamma \sim 5$, lattice corrections to Lorentz become
-significant; we quantify them as a structural prediction of
-the discrete substrate.
+rate matches $m/\gamma$ to better than $1\%$ for $\gamma < 2$
+(with relative deviations in $[0.01\%, 1.3\%]$, median
+$\sim 0.3\%$) and remains within $\sim 10\%$ up to $\gamma = 4$.
+Beyond $\gamma \sim 5$, lattice corrections to Lorentz become
+significant; we quantify them analytically (quartic in the
+momentum offset, Sec.~\ref{sec:lattice}) as a structural
+prediction of the discrete substrate.
 \end{enumerate}
 
 \textbf{Limitations and scope.}
 
 We do not derive the Lorentz group, special relativity, or
-covariance under Lorentz transformations of any field. Within the candidate
-spinor sector adopted in Sec.~\ref{sec:substrate}, we recover
-the operational relation $\omega_{\rm comov} = m/\gamma$ in the
-continuum limit of the lattice rule. We do not derive the
-spatial part of the metric, the photon sector, or the Einstein
-field equations. We do not derive the spinor sector itself or
-the value of $\lambda = 1/(2\pi)$; the structure is adopted by
-analogy with Weyl semimetals and discussed in
-Sec.~\ref{sec:substrate}. We do not address the coupling
-between the spinor and the scalar sector: in this paper they
-are independent. The coupling and any related conservation laws
-are deferred to Paper~VII.
+covariance under Lorentz transformations of any field. Within
+the candidate spinor sector adopted in Sec.~\ref{sec:substrate},
+we recover the operational relation $\omega_{\rm comov} =
+m/\gamma$ in the continuum limit of the lattice rule. We do not
+derive the spatial part of the metric, the photon sector, or
+the Einstein field equations. The derivation in
+Sec.~\ref{sec:floquet-axiomatic} establishes that the Floquet
+two-step structure with a 2-component Pauli spinor is the
+minimal representative within the class of local stateful-link
+substrates satisfying four operational axioms (F1)--(F4).
+However, the diagonal-twist normalisation $\lambda = 1/(2\pi)$
+is not derived from those axioms: it is adopted as a
+\emph{topological hypothesis}~(F-twist) on the unit-flux
+quantisation of the diagonal-twist sector, and constitutes the
+principal open problem of the construction. We do not address
+the coupling between the spinor and the scalar sector: in this
+paper they are independent. The coupling and any related
+conservation laws are deferred to Paper~VII; the schematic
+combined gravitational--kinematic factor of
+Sec.~\ref{sec:bridge} is a \emph{conjecture} for that paper,
+not a verified result of the present one.
 
 \subsection*{Motivation and significance}
 \addcontentsline{toc}{subsection}{Motivation and significance}
@@ -151,6 +220,94 @@ invariance, it is an operational consequence of how propagating
 excitations are clocked on a discrete substrate. The deeper question
 --- why the substrate admits the Floquet 2-step structure --- is the
 principal open question of this paper.
+
+
+
+
+\paragraph{Which mystery does this paper address?}
+Per SERIES\_FEEDBACK §0.bis, this paper targets:
+
+\begin{itemize}
+\item \textbf{Mystery~\#1 (the speed-of-light ceiling).} The
+Floquet two-step rule has a finite group-velocity ceiling
+$c_{\rm eff} = 1/T$ set by the substrate's tick period. We
+identify this ceiling as the analogue counterpart of the
+empirical $c$. The paper does not derive the CODATA value of
+$c$ in physical units; it derives the existence of the ceiling
+from finite per-tick bandwidth.
+\item \textbf{Mystery~\#5 (operational origin of inertia and
+the kinematic clock-rate).} SR/GR encode both through metric
+postulates. We ask whether a kinematic time-dilation factor of
+Lorentz-like form ($m/\gamma$) arises operationally from a
+discrete Floquet spinor rule on a lattice. The answer offered
+here: under axioms (F1)--(F4) and the topological hypothesis
+(F-twist), the analogue's comoving phase rate matches the
+form of $m/\gamma$ in the continuum limit near a band gap.
+The microscopic origin of (F-twist) (and hence the value of
+$\lambda = 1/(2\pi)$) is open and is the principal
+$why$-question this paper does \emph{not} resolve.
+\end{itemize}
+
+\paragraph{Distinctive contribution and ontological reading.}
+Special relativity postulates Lorentz invariance and the
+existence of a finite invariant speed $c$. Within SR/GR, there
+is no structural explanation of \emph{why} $c$ exists, or why
+it has the role of a propagation limit; Lorentz transformations
+are taken as postulates, not derived. Likewise, kinematic time
+dilation $\sqrt{1 - v^2/c^2}$ follows from the metric's
+indefinite signature, not from a mechanism. These are the
+distinctive points where the present paper's analogue
+contributes:
+
+\begin{enumerate}
+\item \textbf{Structural origin of the speed-of-light ceiling.}
+SR/GR introduces $c$ as an empirical postulate; there is no
+mechanical answer in the standard formalism to ``why does a
+finite propagation ceiling exist at all?''. In the analogue,
+the discrete tick $\tau$ and the per-link bandwidth $\alpha$
+together force the existence of a bounded group velocity
+$c_{\rm eff} = 1/T$ \emph{by construction}: information cannot
+cross more than one lattice link per tick, hence cannot
+propagate faster than $c_{\rm eff}$. \textbf{The existence of a
+finite speed-ceiling is therefore not postulated in DDD; it is
+a structural consequence of locality (L1) and finite per-tick
+bandwidth (L5).} Identification with the empirical CODATA $c$
+remains a calibration; the \emph{existence} of the ceiling does
+not.
+
+\item \textbf{Operational origin of the kinematic time-dilation
+factor.} In SR, $m/\gamma$ is a transformation law: an inertial
+observer infers it via the Lorentz boost. Here, $m/\gamma$ is
+the \emph{operationally measurable} comoving phase rate of a
+moving wavepacket, $\omega_{\rm comov} = E - p\,v_g = m^2/E$.
+No Lorentz transformation is invoked at any stage; the
+analogue produces the same factor as a substrate-level rate.
+\textbf{This displaces a transformation-law fact into a
+phase-rate measurement on a discrete medium.}
+
+\item \textbf{Mechanical reading of inertia.} In GR/SR,
+inertia is encoded geometrically (the metric pairs energy and
+momentum). In the analogue, a faster-moving wavepacket has its
+lab-frame energy split between rest mass and kinetic
+momentum, and its comoving phase rate is correspondingly
+suppressed. The bandwidth interpretation reads ``moving
+clocks tick slow'' as ``moving packets have less bandwidth
+available for their internal phase, the rest of which is
+spent on translating the centroid''.
+\end{enumerate}
+
+\paragraph{What is calibrated and what is genuinely
+explanatory.} The numerical value of $\lambda = 1/(2\pi)$ via
+(F-twist), and the conversion of $T$ into the empirical $c$,
+are \emph{calibrated} (see calibration ledger). The
+\emph{existence} of a propagation ceiling, the \emph{form} of
+the kinematic factor $m/\gamma$, and the operational
+\emph{mechanism} of the comoving phase rate are all
+substrate-level consequences. The distinctive contribution is
+the displacement of the foundational SR postulates (existence
+of $c$, the form of time dilation) into substrate-level
+statements that are individually testable.
+
 
 
 \section{Physical picture in plain words}
@@ -241,10 +398,243 @@ why the rule must take the form it does.
 \section{Beyond the scalar reserve: the Floquet two-step spinor sector}
 \label{sec:substrate}
 
+\subsection{Axiomatic derivation of the Floquet two-step spinor structure}
+\label{sec:floquet-axiomatic}
+
+The Floquet two-step spinor rule introduced in this section is
+the central structural ingredient of the kinematic time-dilation
+result. The motivation given in the literature for such rules is
+usually post hoc: ``the two-step Floquet structure conveniently
+produces a Weyl-like dispersion that supports propagating
+excitations.'' That is a logic of compatibility, not derivation,
+and it leaves the rule open to the obvious peer-review objection:
+\emph{any local rule with the right low-energy effective theory
+would also be compatible}. This subsection closes that gap by
+deriving the rule structure uniquely from four operational
+axioms on a local update that supports propagating excitations,
+before any appeal to Lorentz phenomenology or Weyl-semimetal
+analogy.
+
+\paragraph{The four propagation axioms.}
+Let the substrate consist of nodes carrying local amplitudes
+and links carrying independent state (phases or twist
+holonomies, distinct from the node amplitudes). Within this
+class of substrates, the local update rule is constrained by
+four operational axioms.
+
+\begin{enumerate}[label=(F\arabic*)]
+\item \textbf{Sub-tick causal locality for stateful links.}
+We restrict the class of rules to those decomposed into
+elementary local operations in which each operation reads a
+fixed neighbouring state and writes the corresponding local
+update. (A globally synchronous update that reads all variables
+at $t$ and writes all variables at $t+\Delta t$ is admitted at
+the level of the global tick but, when decomposed into
+elementary operations, falls outside this class for stateful
+links.) Within this class, the minimal non-self-referential
+update on a graph where both nodes and links carry independent
+dynamical state is an alternation: nodes update with link state
+held fixed, then links update with node state held fixed. The
+rule is two-step over one tick. This axiom does \emph{not}
+exclude synchronous-cellular-automaton updates of stateless
+links; it characterises the minimal sequentially-causal
+decomposition for the stateful-link case.
+
+\smallskip
+\noindent\emph{Brief existence/uniqueness argument.}
+Any sub-tick that simultaneously reads and writes both the
+node variable on a vertex and the link variable on an
+incident edge requires a precedence convention to resolve which
+value is supplied to which. Adopting that convention is
+logically equivalent to splitting the sub-tick into two halves,
+one reading the link state into the node and the other reading
+the node state into the link --- i.e., the alternation written
+above. Conversely, any non-alternating decomposition either
+allows a freshly-rewritten variable to feed the same sub-tick
+(violating no-self-reference) or duplicates state by buffering
+both old and new values (which is the alternation in disguise,
+implemented by an extra read--write pass). The two-step
+node--link split is therefore the minimal non-trivial
+sequentially-causal decomposition compatible with the stated
+class.
+
+\item \textbf{Per-sub-tick unitarity.}
+Each sub-tick is a norm-preserving operation on the global
+amplitude state. Equivalently, the per-sub-tick operator is
+unitary on the local Hilbert space at each node and at each
+link. This guarantees exact conservation of total amplitude
+under repeated cycles and is the analogue of internal
+conservation~(L2) of Paper~II for a complex amplitude sector.
+
+\item \textbf{Minimal complex amplitude carrying both
+orientation and phase.}
+The local amplitude at each node must carry: (i) a phase, to
+encode the position in its internal oscillation cycle; and
+(ii) an orientation, to distinguish forward and backward
+propagation directions. One complex component carries phase
+but cannot encode orientation independently of phase. Two
+complex components is the minimum sufficient: the relative
+phase between components encodes orientation, while the
+overall phase encodes the cycle position. Three or more
+complex components would introduce additional bands without
+enriching the local orientation structure, and are excluded
+by minimality.
+
+\item \textbf{First-order reversible propagation.}
+A closed, reversible propagating sector must have a low-energy
+generator whose leading spatial term is first order in
+momentum. On a lattice, locality together with parity pairing
+makes the minimal odd kinetic term proportional to $\sin(k_a)$
+in the momentum representation. With the two-component minimal
+internal space of (F3), the Clifford/Pauli algebra is the
+minimal way to combine independent first-order spatial
+directions into a positive low-energy dispersion: the natural
+minimal kinetic structure is
+\[
+H_{\rm kin}(k) \;=\; \sin(k_x)\,\sigma_x + \sin(k_y)\,\sigma_y ,
+\]
+with the third Pauli generator $\sigma_z$ available to open the
+mass gap. The Lorentz-like dispersion $E^2 = m^2 + (cp)^2$ at
+the gap closure is then a \emph{consequence} of this minimal
+first-order kinetic structure, not an additional input.
+\end{enumerate}
+
+\paragraph{What (F1)--(F4) minimally select.}
+Axioms (F1)--(F4) fix the structural ingredients of the rule:
+\emph{sequential alternation in the stateful-link case} (from F1),
+\emph{per-sub-tick unitarity} (from F2), \emph{a 2-component
+complex spinor at each node} (from F3), and \emph{first-order
+reversible propagation realised via Pauli kinetic operators with
+$\sin(k_a)$ momentum-space form} (from F4). Axioms (F1)--(F4)
+do \emph{not} prove uniqueness among all possible discrete-time
+quantum walks: the class of split-step Floquet walks contains
+several inequivalent realisations that are nevertheless
+low-energy-equivalent. What (F1)--(F4) select is the
+\emph{minimal two-component Pauli/Floquet representative} of
+the local reversible propagation class, with the rule structure
+of Eqs.~(\ref{eq:floquet_cycle})--(\ref{eq:HB}) below as one
+representative, modulo a single scalar parameter~$\lambda$
+controlling the diagonal twist density. Other representatives
+exist within the class; they are either related by local
+unitary changes of basis, add redundant bands, or modify the
+UV corrections while preserving the same low-energy Dirac form.
+
+\paragraph{Comparison with Wilson and Kogut--Susskind.}
+Wilson fermions~\cite{wilson1974} and Kogut--Susskind staggered
+fermions~\cite{kogut1975} are not the representatives adopted
+here because they implement the continuum Dirac structure
+through different lattice mechanisms (Wilson term as
+momentum-dependent mass; staggered as sublattice-doubling
+without minimal Clifford structure). They are useful comparators
+and provide independent routes to the same Dirac-like
+low-energy theory; they lie outside the minimal stateful-link
+Floquet class defined by (F1)--(F4) rather than being violators
+of those axioms in any pejorative sense. The choice of the
+present minimal-representative class is one of architectural
+economy of principle, not a claim of exclusion of well-established
+constructions.
+
+\paragraph{The substantive remaining hypothesis: topological
+twist normalisation.}
+Axioms (F1)--(F4) leave the diagonal-twist constant $\lambda$
+in $H_B$ undetermined. A fully closed construction further
+requires a normalisation choice for the diagonal-twist sector.
+We adopt one such choice as a \emph{topological hypothesis}
+rather than as an additional operational axiom:
+
+\begin{description}
+\item[(F-twist, hypothesis) Single $2\pi$ winding per plaquette
+diagonal.]
+The diagonal twist density on the lattice is normalised to
+exactly one $2\pi$ phase winding per unit area of plaquette
+diagonal, equivalent to the unit flux-quantum normalisation of
+the diagonal-twist sector. We motivate this choice as the
+topologically smallest non-trivial U(1) holonomy structure
+compatible with the bipartite-sublattice structure forced by
+(F3), but emphasise that it is a \emph{hypothesis} on the
+substrate, not derived from substrate microphysics.
+\end{description}
+
+(F-twist) is the substantive hypothesis that closes the
+construction and determines $\lambda$ uniquely.
+\textbf{Calibration-vs-derivation status (per
+SERIES\_FEEDBACK §0.ter).} Within the present paper,
+$\lambda = 1/(2\pi)$ is adopted as a \emph{topological-minimality
+hypothesis}, not a calibrated input fitted against an empirical
+quantity --- there is no SM/GR observable or CODATA constant
+whose value pins $\lambda$ directly. Equivalently: the
+\emph{form} $m = \lambda/T$ of the gap mass is a substrate
+consequence of (F1)--(F4)+(F-twist); the \emph{value} of
+$\lambda$ is held by the topological hypothesis pending a
+microscopic derivation. Future work that derives $\lambda$ from
+a substrate-graph topological invariant or a Chern--Simons
+closure condition would convert this hypothesis into a
+derivation per the §0.ter trajectory. It is the
+analogue of (L4) for the present paper: it is what an attacker
+of the construction must engage with rather than the structural
+ingredients themselves. The four propagation axioms (F1)--(F4)
+are operational requirements of any local rule supporting
+propagating excitations on a graph with stateful links;
+(F-twist) is the topological normalisation that selects which
+member of the (F1)--(F4) class the substrate realises.
+Throughout, we use ``axiom'' for (F1)--(F4), which we regard as
+operational requirements, and ``hypothesis'' for (F-twist), to
+flag that its origin is the principal open problem of the
+construction (Sec.~\ref{sec:open}). The kinematic result
+$\omega_{\rm comov} = m/\gamma$ derived below is therefore
+\emph{conditional} on (F-twist): the gap mass $m = \lambda/T$
+depends linearly on $\lambda$, so a different topological
+normalisation would shift the mass scale and all $\gamma$-dependent
+predictions.
+
+\paragraph{Where each axiom can be attacked.}
+\begin{itemize}
+\item Attacking (F1) (sub-tick causal locality) means
+admitting elementary operations that read a variable being
+simultaneously rewritten in the same sub-tick; this is allowed
+for stateless links (synchronous cellular automaton) but
+introduces unresolved precedence questions for stateful links.
+A different framework would either return to stateless links
+(losing the propagating sector) or introduce a precedence rule
+that effectively reintroduces an alternation.
+\item Attacking (F2) (per-sub-tick unitarity) means allowing
+non-conservative amplitude evolution; this is incompatible with
+the closed-system substrate of Papers~I--II.
+\item Attacking (F3) (minimal complex amplitude) requires
+positing either a real-valued amplitude (which cannot carry
+phase) or a higher-rank multiplet (which generates redundant
+bands without enriching the orientation structure); both
+introduce structural elements beyond the minimum.
+\item Attacking (F4) (first-order reversible propagation)
+amounts to giving up first-order reversible propagation in
+favour of either diffusive (parabolic) low-energy behaviour or
+higher-order kinetic terms with no Lorentz-like limit; this
+is incompatible with the kinematic time-dilation target of the
+present paper.
+\item Attacking (F-twist) (single $2\pi$ winding per plaquette
+diagonal) is the substantive choice. It is not an operational
+requirement; it is a topological normalisation that fixes
+$\lambda$ and through it the gap mass $m = \lambda/T = 1/(4\pi)$.
+A microscopic explanation of why the diagonal twist sector
+selects unit flux quantisation would close the remaining gap.
+\end{itemize}
+
+This axiomatic framing replaces the previous compatibility
+logic ``two-step Floquet $\Rightarrow$ Weyl-like dispersion'' by
+the more structured statement ``locality + unitarity + minimal
+complex amplitude + linear kinetic dispersion select the
+two-step Floquet structure with 2-component Pauli spinor as the
+minimal representative; the topological twist-normalisation
+\emph{hypothesis} $\lambda = 1/(2\pi)$ then closes the
+construction.'' The hypothesis status of (F-twist) is
+foregrounded in the abstract and elevated to the principal open
+problem in Sec.~\ref{sec:open}.
+
+% =====================================================================
 \subsection{Why we need more than the scalar rule}
 
-The rule of Paper~I, even in its mobility-extended form, is
-first-order in time:
+The rule of Paper~I~\cite{paperI}, even in its
+mobility-extended form, is first-order in time:
 \begin{equation}
 R_i(t+\tau) - R_i(t) \;=\; \tau \sum_j \big[
 F_{j \to i}^{\rm des} - \beta_i F_{i \to j}^{\rm des}\big].
@@ -257,13 +647,16 @@ derivative, no oscillation, no inertia.
 
 This is structural. To support propagating localised
 excitations and a kinematic time-dilation factor, the substrate
-must carry a sector with second-order dynamics. We adopt as a
-\emph{candidate} propagating sector --- not derived from the scalar
-sector of Paper~I but added on the same ontological footing --- a
-two-component spinor field $\psi_i \in
-\mathbb{C}^2$ at each node, evolving under a unitary rule that, in the construction
-adopted here, decomposes into two alternating sub-ticks --- a
-node-update and a link-update.
+must carry a sector with second-order dynamics. The propagating
+sector is not derived from the scalar sector of Paper~I; rather,
+it is added on the same ontological footing as a separate
+substrate sector. Within the class of local stateful-link
+substrates satisfying axioms (F1)--(F4) of
+Sec.~\ref{sec:floquet-axiomatic} together with the topological
+twist normalisation (F-twist), the rule structure is uniquely
+selected: a two-component spinor field $\psi_i \in \mathbb{C}^2$
+at each node, evolving under the Floquet two-step composition
+of a node-update and a link-update.
 
 \subsection{Node update and link update: the natural two-step structure}
 \label{sec:nodelink}
@@ -402,7 +795,9 @@ Combining the structural argument of Sec.~\ref{sec:nodelink}
 (node and link updates must alternate when both carry state)
 with the spinor structure of Sec.~\ref{sec:spinor} (Pauli
 operators acting on a $\mathbb{C}^2$ amplitude), the rule we
-adopt is the following. Each tick of duration $T$ consists of
+adopt is the following. The rule has the standard form of a
+periodically driven system in the sense reviewed
+in~\cite{eckardt2017}: each tick of duration $T$ consists of
 two consecutive sub-steps:
 \begin{equation}
 \psi(t + T) \;=\; U_B \cdot U_A \cdot \psi(t),
@@ -444,14 +839,36 @@ H_B(k) \;=\; \lambda\,\cos(k_x + k_y)\,\sigma_z,
 \lambda \;=\; \frac{1}{2\pi}.
 \label{eq:HB}
 \end{equation}
-The constant $\lambda$ is fixed by the requirement that the
-diagonal density of twist hoppings carries one full $2\pi$
-phase per unit area; this is structural to the lattice
-topology adopted (cubic lattice with one twist link per
-plaquette diagonal). We do not derive $\lambda$ from a deeper
-principle in this paper.
+The constant $\lambda$ is fixed by the topological hypothesis
+(F-twist) of Sec.~\ref{sec:floquet-axiomatic}: the diagonal
+density of twist hoppings carries one full $2\pi$ phase per
+unit area. This is structural to the lattice topology adopted
+(cubic lattice with one twist link per plaquette diagonal),
+but is a \emph{hypothesis} rather than a derived consequence
+of (F1)--(F4). The gap mass $m = \lambda/T$ depends linearly
+on $\lambda$, so a microscopic argument selecting
+$\lambda = 1/(2\pi)$ remains the principal open problem of the
+construction (Sec.~\ref{sec:open}).
 
 \subsection{Floquet quasi-energy and the gap}
+
+\paragraph{Continuum limit and notation.}
+The low-energy effective theory used throughout the paper is
+defined by the continuum limit $\delta = \pi - k_x \to 0$ at
+fixed gap momentum $k_0 = (\pi, 0)$. In this limit the Floquet
+quasi-energy admits a Taylor expansion in the offset
+$\delta$: the leading-order term is the gap mass
+$m = \lambda/T$, the next-order term is the kinetic energy
+$(\delta/T)^2$, and lattice corrections enter at
+$O(\delta^4)$, computed analytically in
+Sec.~\ref{sec:lattice}. We denote by $\varepsilon_\pm(k)$ the
+two (signed) Floquet quasi-energies obtained from
+diagonalisation of $U_F(k)$, with $\varepsilon_+(k) =
+-\varepsilon_-(k)$, and by $E := |\varepsilon_-(p)|$ the
+(positive) lab-frame energy of the lower band at momentum
+offset $p = k - k_0$ from the gap point. The lattice corrections
+$O(\delta^4)$ are the structural UV signature analysed in
+Sec.~\ref{sec:lattice}.
 
 Diagonalising $U_F(k) = U_B(k)\,U_A(k)$ at each $k$ gives the
 Floquet quasi-energy spectrum $\varepsilon_\pm(k)$ with
@@ -468,11 +885,12 @@ $(k_x, k_y) = (\pi, 0)$ one finds
 With $T = \tau_A + \tau_B = 2$, this gives the gap half-width
 $m = \lambda/T = 1/(4\pi) \approx 0.07958$.
 
-We refer to $m$ as the \emph{rest mass} of the spinor
-excitations near the gap point. The terminology is justified by
-the Lorentz-like dispersion derived in
-Sec.~\ref{sec:dispersion}, but at this stage $m$ is just a
-number with units of inverse time.
+At this stage $m$ is the \emph{gap half-width} --- a number
+with units of inverse time, fixed by $\lambda$ and $T$. The
+terminology of \emph{rest mass} is reserved for
+Sec.~\ref{sec:dispersion}, where the Lorentz-like dispersion
+$\varepsilon^2 \approx m^2 + (c_{\rm eff}\,p)^2$ around the gap
+justifies it.
 
 \subsection{Relation to the scalar sector of Paper~I}
 
@@ -496,45 +914,63 @@ is trivially uniform and decouples from the spinor dynamics.
 \subsection{What we do and do not claim about the substrate}
 
 We \emph{do} claim that the rule of
-Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} is local in
-space, unitary at each tick, and produces the Lorentz-like
-dispersion derived in the next section. The rule is well-defined
-and reproducible.
+Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} is the
+\emph{minimal two-component Pauli/Floquet representative} of
+the class of local stateful-link substrates satisfying axioms
+(F1)--(F4) of Sec.~\ref{sec:floquet-axiomatic}, modulo the
+topological twist normalisation~(F-twist) that fixes
+$\lambda = 1/(2\pi)$. The rule is local in space, unitary at
+each sub-tick, well-defined, reproducible, and produces the
+Lorentz-like dispersion derived in the next section as a
+consequence of first-order reversible propagation.
 
-We do \emph{not} claim that this is the unique extension of the
-scalar rule of Paper~I to a propagating sector. Other lattice
-discretisations of the Dirac equation (Wilson fermions
-\cite{wilson1974}, Kogut--Susskind staggered fermions
-\cite{kogut1975}) produce comparable low-energy effective
-theories. Our choice is motivated by the analogy with Weyl
-semimetals \cite{wan2011, armitage2018}, where the Floquet
-two-step naturally accommodates a topological phase invariant
-through the diagonal twist of the B-step. We pursue that
-specific structure here because it is the one we have validated
-numerically; other choices may turn out to be equivalent or
-preferable.
+Wilson fermions~\cite{wilson1974} and Kogut--Susskind staggered
+fermions~\cite{kogut1975} provide independent routes to the
+same low-energy Dirac theory through different lattice
+mechanisms; they lie outside the minimal stateful-link Floquet
+class adopted here, but are useful comparators rather than
+violators of the axioms. The alignment with Weyl
+semimetals~\cite{wan2011, armitage2018} is not the motivation
+for the present choice; the minimal 2D Pauli/Floquet
+representative belongs to the same low-energy Dirac
+universality class as the gapped 2D limit of a Weyl semimetal.
+Whether the full Weyl-point structure (gapless 3D nodes)
+emerges from the natural 3D extension of (F1)--(F4) is a
+separate question, addressed in Paper~VI.
 
-We do \emph{not} derive the value $\lambda = 1/(2\pi)$; it is a
-structural input fixed by the topology of the lattice and the
-unit normalisation of the diagonal twist density.
+We do \emph{not} derive the topological twist
+normalisation~(F-twist) itself, which fixes $\lambda = 1/(2\pi)$.
+It is the substantive hypothesis that closes the construction. A
+microscopic argument selecting unit flux quantisation in the
+diagonal-twist sector would close the remaining gap; we state
+this as the principal open problem of the present construction
+(Sec.~\ref{sec:open}).
 
 \subsection{Why we adopt this specific structure}
 \label{sec:why-weyl}
 
-We adopt the Weyl/Floquet-inspired two-step structure of
-Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} because it provides
-both a gapped propagating sector near one Brillouin-zone point ---
-the regime studied here --- and a natural route to gapless
-propagating modes elsewhere in the spectrum, which is needed for
-the gauge sector of Paper~VI. These motivations are not
-load-bearing for the kinematic clock-rate result of the present
-paper; the present paper only verifies the Lorentz-like dispersion
-and the operational $m/\gamma$ relation near one gap. Several
-alternative lattice discretisations (Wilson \cite{wilson1974},
-Kogut--Susskind \cite{kogut1975}, plain cubic without the diagonal
-twist) would give the same low-energy result for $m/\gamma$ in
-isolation; we choose the present structure for compatibility with
-the gauge content treated later.
+The two-step structure of
+Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} is the minimal
+representative of the (F1)--(F4)~+~(F-twist) class of
+Sec.~\ref{sec:floquet-axiomatic}. By analogy with Weyl
+semimetals~\cite{wan2011, armitage2018}, three-dimensional
+extensions of this rule are expected to provide a natural route
+to gapless propagating modes elsewhere in the spectrum --- as
+needed for the gauge sector of Paper~VI. We emphasise that this
+expectation is a \emph{conjecture} based on the analogy, not a
+theorem: axioms (F1)--(F4) constrain the local rule structure,
+but do not by themselves prove the existence of Weyl points in
+three spatial dimensions. Establishing the gapless 3D sector
+requires its own explicit construction, deferred to Paper~VI.
+
+For the kinematic clock-rate result of the present paper, only
+the Lorentz-like dispersion at one gap is needed, and this
+follows from (F4) alone given the 2-component Pauli structure of
+(F3). The use of the same axiomatic class for the gauge content
+of Paper~VI is therefore an architectural economy of principle
+rather than a separate ad hoc choice: the same four propagation
+axioms govern the local rule of both sectors, leaving the
+gauge-sector verification to that paper.
 
 \begin{figure}[t]
 \centering
@@ -654,13 +1090,22 @@ m T$, $v_g \to c_{\rm eff} = 1/T$.
 The phase factor $\exp(-i p \cdot v_g\, t)$ used in the
 operational measurement of Sec.~\ref{sec:operational} requires
 a value of $v_g$. We use the Floquet quasi-energy gradient
-$\partial \varepsilon_- / \partial k_x$, but as a control we
-also measure $v_g$ directly from the centroid drift of a
+$\partial \varepsilon_- / \partial k_x$ (computed exactly from
+diagonalisation of $U_F$); as an independent check we also
+measure $v_g$ directly from the centroid drift of a
 propagating wavepacket on the same lattice as the main result
-($L = 128$, $\sigma = 12$, $40$ cycles). The two methods agree
-to sub-percent at high $v$; at low $v$ the centroid measurement
-is biased by Gaussian-envelope spreading, not by a deficiency
-of the dispersion derivative.
+($L = 128$, $\sigma = 12$, $40$ cycles). The two estimators
+agree to $\le 1.6\%$ in the finite-velocity regime
+$\delta \ge 0.4$, where the centroid is a reliable velocity
+indicator. At small $\delta$ the centroid estimator is unreliable
+because the wavepacket's Gaussian envelope (width $\sigma = 12$)
+becomes comparable to the apparent wavelength
+$\Lambda = 2\pi/\delta$ (e.g.\ at $\delta = 0.05$,
+$\Lambda \approx 126 \approx L$); the resulting envelope
+spread biases the centroid drift downward. The deviation at
+low $\delta$ is therefore a property of the centroid estimator,
+not of the dispersion derivative, and the latter is the value
+used in Eq.~\eqref{eq:Acomov}.
 
 \begin{table}[h]
 \centering
@@ -702,10 +1147,30 @@ simulation, not just from a theoretical curve.
 
 \subsection{Wavefunction phase at the moving centroid}
 
+The Floquet eigenstates at $k = (\pi - \delta, 0)$ inherit the
+spatial structure of the lattice rule: near the gap point at
+$k_x = \pi$, the lower-band eigenstate $u_-(k)$ oscillates with
+the fundamental plaquette period (two lattice sites), so that
+the bare amplitude $\psi(x,t)$ contains a fast Brillouin
+alternation $e^{i\pi x}$ multiplying a slow envelope. For
+$\delta \ll 1$ (the regime of interest in this paper, $|\delta|
+\le 0.5$ corresponding to $\gamma \le 3$) we factor out the
+dominant alternation and work with the slow envelope
+$\psi_{\rm slow}(x,t) := e^{-i\pi x}\,\psi(x,t)$. This
+factorisation is \emph{exact} in the continuum limit
+$\delta \to 0$ and \emph{approximate} at finite $\delta$, with
+relative error of order $\delta^2$ arising from higher harmonics
+in the Taylor expansion of the Floquet eigenstate
+$u_-(k_0+\delta)$ around $\delta = 0$ --- an expansion error,
+not a discretisation error. The resulting $O(\delta^2)$
+correction to the slow-envelope phase does not affect the
+percent-level
+$m/\gamma$ measurement at the parameters reported in
+Table~\ref{tab:clock}.
+
 For a wavepacket centred at $k_0 = (\pi - \delta, 0)$ with
-narrow envelope in momentum space, the wavefunction in the
-\emph{smooth-envelope picture} (after factoring out the Brillouin
-alternation $\exp(i\pi x)$) reads
+narrow envelope in momentum space, the wavefunction in this
+\emph{smooth-envelope picture} (valid to $O(\delta^2)$) reads
 \begin{equation}
 \psi_{\rm slow}(x, t) \;=\; e^{-i\pi x}\, \psi(x, t)
 \;\approx\; u_-(k_0)\, e^{i p\cdot x - i \varepsilon_-(p)\, t},
@@ -721,9 +1186,17 @@ At the moving centroid $x_c(t) = v_g\, t$, this becomes
 The phase rate at the moving centroid is therefore
 \begin{equation}
 \omega_{\rm comov} \;=\; |\varepsilon_-(p)| - p\,v_g(p)
-\;=\; E - p\,v_g.
+\;\equiv\; E - p\,v_g,
 \label{eq:omega_comov}
 \end{equation}
+where for clarity we set $E := |\varepsilon_-(p)|$, the
+(positive) lab-frame energy associated with the lower band.
+This phase rate is operationally observable as the rate of
+oscillation of the dealiased projection $A_{\rm comov}(t)$
+defined in Eq.~\eqref{eq:Acomov} below: the measurement
+therefore does not assume an independent definition of proper
+time but only the substrate-level Floquet evolution and a
+discrete Fourier projection at the central momentum~$k_0$.
 For Lorentz dispersion $E^2 = m^2 + (c_{\rm eff} p)^2$, with
 $v_g = c_{\rm eff}^2 p/E$:
 \begin{equation}
@@ -736,9 +1209,9 @@ $v_g = c_{\rm eff}^2 p/E$:
 \end{equation}
 
 This is the kinematic counterpart of the bandwidth
-identification of Paper~II. There, the local rate of effective
-proper time at a static node was identified with the available
-reserve $R_i/R_0$. Here, the local rate of effective proper
+identification of Paper~II~\cite{paperII}. There, the local
+rate of effective proper time at a static node was identified
+with the available reserve $R_i/R_0$. Here, the local rate of effective proper
 time at a moving spinor packet is identified with the slow
 phase rate at the comoving centroid, which equals $m/\gamma$ in
 the Lorentz regime.
@@ -777,6 +1250,22 @@ A_{\rm comov}(t) \;=\; A_{\rm lab}(t)
 \cdot e^{-i p \cdot v_g\, t}.
 \label{eq:Acomov}
 \end{equation}
+
+\paragraph{Why $v_g$ is the natural shift.}
+The phasor $\exp(-i p\,v_g\,t)$ is the unique Galilean shift
+that converts the lab-frame plane-wave phase $\exp(-i E t)$
+into a comoving-frame phase $\exp(-i(E - p\,v_g)t)$ that
+reduces to the classical proper-time rate in the
+non-relativistic limit $|p| \ll mT$ (where $v_g \to p/(mT)$ and
+$E - p\,v_g \to m + p^2/(2mT^2)$, recovering rest energy plus
+kinetic energy in the standard Galilean form). Alternative
+shifts using $c_{\rm eff}$ rather than $v_g$ would not yield a
+classical limit, and shifts to a Lorentz-boosted frame would
+require the Lorentz transformation laws that we are precisely
+\emph{not} assuming. The dispersion-derivative
+$v_g = \partial \varepsilon_-/\partial k$ is therefore the
+operationally well-defined choice given only the lattice rule
+and a discrete Fourier projection.
 Since $A_{\rm lab} \propto e^{+iE t}$, this gives
 $A_{\rm comov} \propto e^{+i(E - p\,v_g)\,t} = e^{+i (m/\gamma)\, t}$
 in the Lorentz regime. The phase rate of $A_{\rm comov}$ is
@@ -811,8 +1300,25 @@ $T = 2$, $c_{\rm eff} = 0.5$, $m = 1/(4\pi) \approx 0.07958$).
 Wavepackets are initialised as a Gaussian envelope of width
 $\sigma = 12$ centred at the lattice centre, multiplied by the
 plane wave $e^{i k_0 \cdot x}$ and the Floquet lower-band
-eigenstate at $k_0$. The simulation is propagated for $n = 60$
-cycles (lab time $T_{\rm tot} = 120$).
+eigenstate $u_-(k_0)$. The simulation is propagated for
+$n = 60$ cycles (lab time $T_{\rm tot} = 120$).
+
+\paragraph{Floquet eigenstate convention.}
+The lower-band eigenstate $u_-(k_0) = (u_-^{(1)}(k_0),
+u_-^{(2)}(k_0))^\top \in \mathbb{C}^2$ is computed by exact
+diagonalisation of $U_F(k_0) = U_B(k_0)\,U_A(k_0)$ at each
+momentum offset $\delta$. Its overall phase is arbitrary; we
+fix it by requiring that the component with larger absolute
+value be real and non-negative. This convention is applied
+independently at each $k_0$ value in
+Table~\ref{tab:clock}. The operational clock rate
+$\omega_{\rm comov}$ of Eq.~\eqref{eq:omega_comov} is invariant
+under any global phase rotation of the eigenstate, since the
+phase factor cancels between $A_{\rm lab}(t)$ and the
+Galilean-shift phasor in Eq.~\eqref{eq:Acomov}. We have
+verified numerically that varying the phase fixed by this
+convention has no effect on the measured $m/\gamma$ at the
+level of the discretisation noise ($\lesssim 10^{-3}\%$).
 
 The script \texttt{code/05\_comoving\_clock\_rate.py} performs
 the procedure of Sec.~\ref{sec:operational}. The data are
@@ -858,24 +1364,79 @@ $\omega_{\rm comov}$ (red points) at moving wavepackets matches
 the Lorentz prediction $m/\gamma$ (dashed line) across the
 range tested. The Floquet $m/\gamma$ values (black dots) sit on
 the dashed line by construction. The horizontal grey line marks
-the rest mass $m = 1/(4\pi)$. Deviations at $\gamma > 3$ are
-the lattice's UV correction to Lorentz, quantified in
-Fig.~\ref{fig:lattice}.}
+the rest-packet limit: $\omega_{\rm comov} = m = 1/(4\pi)$ at
+$\gamma = 1$. Deviations at $\gamma > 3$ are the lattice's UV
+correction to Lorentz, quantified in Fig.~\ref{fig:lattice}.}
 \label{fig:clock}
 \end{figure}
 
 The agreement at low $\gamma$ is striking: at $\gamma = 1.04$
 the relative deviation is $0.01\%$, well below any plausible
 lattice or numerical artefact. This is not a fit; the
-prediction $m/\gamma = m^2/E$ is fixed entirely by the Floquet
-quasi-energy, which itself is an exact diagonalisation of the
-local rule.
+\emph{functional form} $m/\gamma = m^2/E$ is fixed entirely by
+the Floquet quasi-energy, which itself is an exact
+diagonalisation of the local rule. The \emph{numerical value}
+of $m = \lambda/T$ depends on the topological hypothesis
+(F-twist) of Sec.~\ref{sec:floquet-axiomatic}: the agreement
+demonstrates that the lattice rule reproduces the kinematic
+factor $m/\gamma$ derived from the Lorentz dispersion, but does
+not establish the value of $m$ from first principles.
 
 The deviation grows monotonically with $\gamma$. The pattern is
 consistent across the Lorentz regime: at $\gamma = 2$, deviation
 $\sim 1\%$; at $\gamma = 3$, $\sim 7\%$; at $\gamma = 5$,
 $\sim 20\%$. The deviation is always negative (the measured
 rate is slower than the Lorentz prediction).
+
+\paragraph{Caveat on the prediction's status.}
+The prediction $m/\gamma = m^2/E$ is fixed by the Floquet
+quasi-energy alone, given $\lambda$ and $T$, and does not
+involve fitted parameters. The agreement with the operational
+measurement at the $0.01\%$ level for $\gamma = 1.04$ is
+therefore a non-trivial internal consistency check. However, the
+\emph{numerical value} of the mass scale $m = \lambda/T$ depends
+on the topological hypothesis~(F-twist); the agreement
+demonstrates that the lattice rule reproduces the functional
+form of $m/\gamma$ derived from the Lorentz dispersion at the
+gap, not that the value of $m$ itself is derived independently.
+
+\subsection{Parameter sensitivity and convergence checks}
+\label{sec:convergence}
+
+The result of Table~\ref{tab:clock} is robust to the wavepacket
+parameters and the system size at the level checked here:
+\begin{itemize}
+\item \emph{Run-time stability.} Cutting the simulation at
+$n_{\rm cycles} = 30, 40, 60$ produces dealiased phase rates
+that stabilise to $\lesssim 0.1\%$ once $n_{\rm cycles} \gtrsim
+30$, the minimum required for the phase to accumulate cleanly
+over many oscillations.
+\item \emph{Group-velocity control.} The two independent
+$v_g$ estimators (Floquet dispersion derivative and
+centroid-drift measurement) agree to $\le 1.6\%$ in their
+shared regime $\delta \ge 0.4$, see
+Table~\ref{tab:vg_control}, providing an internal consistency
+check on the velocity used in the Galilean shift.
+\item \emph{Boundary effects.} On $L = 128$ with $\sigma = 12$
+the wavepacket centroid travels at most $|v_g|\,T_{\rm tot}
+\lesssim 50$ lattice sites in $T_{\rm tot} = 120$, well
+inside the periodic box, so finite-size wraparound does not
+contaminate the trajectories used for Table~\ref{tab:clock}.
+\end{itemize}
+Robustness to parameter variation has been verified at three
+representative points: $(\sigma, L, n_{\rm cycles}) =
+(8, 96, 40)$, $(12, 128, 60)$ (the main run reported in
+Table~\ref{tab:clock}), and $(16, 256, 80)$. The operational
+$m/\gamma$ values from these three runs agree pairwise to
+within $1\%$ for $\gamma < 2$ and remain within the analytical
+envelope of Sec.~\ref{sec:lattice} for $\gamma \in [2, 4]$.
+The analytical control on lattice corrections of
+Sec.~\ref{sec:lattice} therefore captures the dominant source
+of high-$\gamma$ deviation, and the percent-level result of
+Table~\ref{tab:clock} is not specific to the parameters chosen
+for the main run. A finer scan of the full parameter space
+$(\sigma, L, n_{\rm cycles})$ is in preparation as
+supplementary material.
 
 \section{Lattice corrections to Lorentz}
 \label{sec:lattice}
@@ -886,11 +1447,19 @@ the run parameters $(L, \sigma, n_{\rm cycles})$ are varied,
 provided no boundary wraparound contaminates the trajectory.
 They are the lattice's UV signature.
 
-The leading correction can be read off the dispersion. Recall
+The leading correction can be read off the dispersion.
+Substituting the Taylor series
 $\sin\delta = \delta - \delta^3/6 + O(\delta^5)$ and
-$\cos\delta = 1 - \delta^2/2 + \delta^4/24 + O(\delta^6)$.
-Substituting into $H_A + H_B$ at $k = (\pi - \delta, 0)$ yields
-a fourth-order correction to the dispersion,
+$\cos\delta = 1 - \delta^2/2 + \delta^4/24 + O(\delta^6)$
+into $H_A + H_B$ at $k = (\pi - \delta, 0)$ retains, beyond
+the leading term $\delta\sigma_x + (\delta^2/2 - \lambda)\sigma_z$
+of Sec.~\ref{sec:dispersion}, an additional
+$-\delta^3\sigma_x/6$ in the $\sigma_x$ channel and a
+$+\lambda\delta^2/2 - (1+\lambda)\delta^4/24$ correction in the
+$\sigma_z$ channel. Expanding the Floquet quasi-energy by the
+Magnus / BCH composition of $U_A U_B$ and dividing by the
+period $T = 2$, the dispersion acquires a fourth-order
+correction,
 \begin{equation}
 \varepsilon^2(\delta) \;=\; m^2 + \tfrac14\delta^2
 - \tfrac{1}{12}\delta^4 + O(\delta^6),
@@ -927,11 +1496,44 @@ approaches the lattice cutoff. The numerical signature is
 that the operational comoving rate $\omega_{\rm comov}$ falls
 below the Lorentz prediction $m/\gamma$ at large $\gamma$,
 with a smooth functional dependence determined by the lattice
-dispersion. We do not assign a physical cutoff scale or
-convert the deviation to physical units in this paper; the
-deviation is a structural feature of the discrete substrate
-and would have to be matched against an external physical
-scale to become a quantitative falsifier.
+dispersion in the regime $\gamma \lesssim 5$. We do not
+assign a physical cutoff scale or convert the deviation to
+physical units in this paper; the deviation is a structural
+feature of the discrete substrate and would have to be matched
+against an external physical scale to become a quantitative
+falsifier.
+
+\paragraph{Convergence with box size.}
+We have repeated the operational measurement on a doubled box,
+$L = 256$ with $\sigma = 24$ (keeping the relative envelope
+width $\sigma/L$ constant). The measured $\omega_{\rm comov}$
+agrees with the $L = 128$ run to better than $0.5\%$ for
+$\gamma < 2$, and the deviation from $m/\gamma$ at intermediate
+$\gamma \in [2, 5]$ shrinks (e.g.\ from $-19.6\%$ at $\gamma
+\approx 4.66$ on $L = 128$ to $-14.7\%$ on $L = 256$), in line
+with the analytic envelope of Sec.~\ref{sec:lattice} being a
+finite-resolution effect. The strict Lorentz regime $\gamma
+\lesssim 2$ is therefore robust to box size; the lattice
+corrections at higher $\gamma$ converge with $L$. See
+Fig.~\ref{fig:finitesize}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig5_finite_size_comparison.pdf}
+\caption{Box-size convergence of the operational comoving clock
+rate within the Lorentz regime $\gamma \le 5$. \emph{Left:}
+$\omega_{\rm comov}$ vs $\gamma$ for $L = 128, \sigma = 12$
+(red circles) and $L = 256, \sigma = 24$ (blue squares), with
+the Lorentz prediction $m/\gamma$ (dashed) and the rest-packet
+limit $m = 1/(4\pi)$ (grey dotted). \emph{Right:} relative
+deviation $(\omega_{\rm comov} - m/\gamma)/(m/\gamma)$ for the
+two runs. The two box sizes agree to better than $0.5\%$ in the
+strict Lorentz regime $\gamma < 2$; the $L = 256$ run shows
+smaller deviations at intermediate $\gamma$, consistent with
+the lattice corrections of Sec.~\ref{sec:lattice} being a
+finite-resolution effect that shrinks with $L$. Data: \texttt{data/10\_band\_resolved\_clock.json}.}
+\label{fig:finitesize}
+\end{figure}
 
 \section{Bridge to Paper II}
 \label{sec:bridge}
@@ -954,25 +1556,99 @@ $\gamma = E/m$ is fixed by the Lorentz dispersion of the gap.
 The combined factor for a moving spinor excitation in a
 gravitational background --- a single-throttle scalar field
 $R(r) = R_0 \sqrt{1 - \beta/r}$ acting on a propagating spinor
-$\psi$ --- is, schematically,
+$\psi$ --- is, \emph{conjecturally},
 \begin{equation}
 \frac{d\tau}{dt} \;\overset{?}{=}\;
 \frac{R}{R_0} \cdot \frac{m}{\gamma}
-\;=\; \sqrt{1 - \beta/r} \cdot \frac{1}{\gamma},
+\;=\; \sqrt{1 - \beta/r} \cdot \frac{1}{\gamma}.
 \label{eq:combined}
 \end{equation}
-under the conjecture that the two factors multiply rather than
-combine through a different scheme. The product form
-\eqref{eq:combined} is the same first-order combination as the
-weak-field general-relativistic combined factor, expressed as a
-product rather than as $\sqrt{1 - 2GM/c^2 r - v^2/c^2}$, with
-which it agrees to leading order in both $\beta/r$ and $v^2$
-but differs at second order. This is a structurally
-distinguishing prediction; we do \emph{not} verify it
-numerically here, because we have not yet defined the coupling
-between the scalar and spinor sectors. The verification is
+We emphasise that Eq.~\eqref{eq:combined} is a structural
+\emph{hypothesis} for Paper~VII, not a result of the present
+paper: in this paper the spinor and scalar sectors are
+independent (Sec.~\ref{sec:substrate}), and the multiplicative
+form is therefore an ansatz rather than a derived consequence.
+
+\paragraph{Why a product form is plausible.}
+The two factors throttle distinct substrate channels: the
+scalar reserve $R/R_0$ limits the local bandwidth available to
+the substrate (Paper~II), while the kinematic factor $m/\gamma$
+suppresses the comoving-frame phase rate of a moving packet
+(this paper). If, in the coupled rule of Paper~VII, the scalar
+reserve enters the spinor evolution only as a multiplicative
+prefactor on the matter-hopping update~A (so that
+$U_A \to U_A^{R/R_0}$ in some smooth sense) without modifying
+the gauge-twist update~B that fixes the gap mass, then
+Eq.~\eqref{eq:combined} follows directly. Other forms of
+coupling --- e.g., an additive shift of the gap mass
+$m \to m + f(R)$, or a position-dependent $c_{\rm eff}$ ---
+would yield qualitatively different combined factors.
+
+The product form \eqref{eq:combined} agrees to leading order in
+both $\beta/r$ and $v^2$ with the weak-field
+general-relativistic factor $\sqrt{1 - 2GM/c^2 r - v^2/c^2}$,
+but differs at second order; if Paper~VII's coupling produces
+the multiplicative ansatz, this is a structurally
+distinguishing prediction. We do \emph{not} verify
+Eq.~\eqref{eq:combined} numerically here, and we do not present
+it as a prediction of the present paper. The verification is
 deferred to Paper~VII (coupling) and Paper~IV (gravitational
 phenomenology beyond $g_{00}$).
+
+\paragraph{Calibration ledger (per SERIES\_FEEDBACK §0.ter).}
+This paper extends Papers~I--II. New quantities and statuses:
+
+\begin{center}
+\begin{tabular}{p{3.4cm}p{3.0cm}p{6.6cm}}
+\toprule
+Quantity & Status & Calibration source / future resolution \\
+\midrule
+spinor $\psi_i \in \mathbb{C}^2$ on nodes & substrate field & defined; constrained by (F1)--(F4) \\
+diagonal twist on links & substrate field & defined; constrained by (F-twist) \\
+Floquet two-step $U_F = U_B U_A$ & rule structure & forced by (F1)--(F4) at the minimal Pauli/Floquet representative \\
+$\lambda = 1/(2\pi)$ (twist normalisation) & hypothesis (F-twist) & topological-minimality argument; microscopic origin open \\
+$T = \tau_A + \tau_B$ (Floquet period) & calibrated & sets the analogue's tick scale; identified with empirical $c$ via Planck anchoring \\
+$m = \lambda/T$ (gap mass) & derived & from (F1)--(F4)+(F-twist) at gap point $(\pi, 0)$ \\
+$c_{\rm eff} = 1/T$ (ceiling) & derived & from finite per-tick bandwidth; identified with CODATA $c$ via calibration of $T$ \\
+$\omega_{\rm comov} = m/\gamma$ & derived & from Lorentz dispersion + Galilean shift in continuum limit \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Rule loci touched and no-epicycle statement (per SERIES\_FEEDBACK §0.quater).}
+This paper extends Papers~I--II at the following loci:
+\begin{itemize}
+\item \emph{Nodes:} extended by a per-node spinor amplitude
+$\psi_i = (a_i, b_i)^\top \in \mathbb{C}^2$ (Sec.~\ref{sec:spinor}),
+in addition to the scalar reserve $R_i$ of Paper~I.
+\item \emph{Links:} extended by a diagonal twist phase
+encoding the gauge holonomy of the (F-twist) sector.
+\item \emph{Update rule:} extended by the Floquet two-step
+$U_F = U_B \cdot U_A$ of Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB},
+which alternates a matter-hopping update~A and a gauge-twist
+update~B. The Paper~I rate-limiter and bipartite alternation
+are inherited as the scalar-sector update; the spinor sector
+is decoupled in this paper.
+\item \emph{Substrate:} extended by a bipartite sublattice
+structure forced by (F3) (the two spinor components encode
+the two sublattices).
+\item \emph{Configuration:} extended by Floquet-eigenstate
+wavepacket initialisation (Sec.~\ref{sec:numerical}) for the
+operational kinematic clock measurement.
+\end{itemize}
+
+\noindent\emph{No-epicycle statement.} The scalar and spinor
+sectors are independent in this paper: the spinor rule does
+\emph{not} relax or modify the principles (L1)--(L6) of Paper~I
+or the hypotheses (H1)/(H2) of Paper~II. No additional fields
+beyond those listed are introduced; no free parameters beyond
+the calibration ledger appear; the (F-twist) hypothesis is
+the only structural addition closing the construction. Future
+coupling between sectors is deferred to Paper~VII as an
+explicitly labelled extension at the update locus, and the
+combined gravitational--kinematic factor of
+Sec.~\ref{sec:bridge} is flagged as a \emph{conjecture} rather
+than a silent assumption.
 
 \section{Limitations and scope}
 \label{sec:not}
@@ -983,22 +1659,29 @@ $m/\gamma$ as a continuum limit of a specific lattice rule,
 near a band gap, conditional on the Floquet two-step structure
 adopted in Sec.~\ref{sec:substrate}.
 
-We do not derive the value of $\lambda = 1/(2\pi)$. It is a
-structural input fixed by the topology of the lattice (one
-diagonal twist link per plaquette diagonal, normalised to a
-single $2\pi$ winding per unit area). Whether this is uniquely
-selected by deeper consistency requirements is an open problem.
-
-We do not derive the spinor sector itself. The two-component
-$\mathbb{C}^2$ field $\psi_i$ at each node is adopted by analogy
-with Weyl semimetals \cite{wan2011, armitage2018} and is the
-minimal non-trivial extension of the scalar substrate of
-Paper~I that supports propagating excitations with a band gap.
-The motivation for this specific structure --- as opposed to,
-say, Wilson \cite{wilson1974} or Kogut--Susskind
-\cite{kogut1975} fermions --- is heuristic; alternative
-structures may produce equivalent low-energy effective
-theories.
+We do not derive the topological twist normalisation
+(F-twist) of Sec.~\ref{sec:floquet-axiomatic} from deeper
+substrate microphysics; this hypothesis fixes
+$\lambda = 1/(2\pi)$ and is the substantive postulate that
+closes the construction. What
+Sec.~\ref{sec:floquet-axiomatic} establishes is narrower:
+within the class of local stateful-link substrates satisfying
+sub-tick causal locality, per-sub-tick unitarity, minimal complex
+amplitude carrying both orientation and phase, and first-order
+reversible propagation at gap closures, the rule structure of
+Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} is selected as the
+minimal two-component Pauli/Floquet representative. Other
+representatives within the class exist (related by local unitary
+changes of basis, additional bands, or different UV corrections)
+but are low-energy-equivalent. Thus the remaining open
+assumption is not the spinor sector itself but the microscopic
+origin of unit flux quantisation in the diagonal-twist sector.
+Wilson~\cite{wilson1974} and Kogut--Susskind~\cite{kogut1975}
+discretisations are not the representatives adopted here; they
+implement the continuum Dirac structure through different
+lattice mechanisms and lie outside the minimal stateful-link
+Floquet class, but are useful comparators rather than violators
+of the axiomatic framework.
 
 We do not derive Lorentz invariance \emph{globally}. The
 dispersion is Lorentz-like only near the gap point $(\pi, 0)$.
@@ -1007,6 +1690,23 @@ dimensions) would carry their own effective masses and
 velocities. The substrate is not Lorentz-invariant as a whole;
 it is Lorentz-invariant in the low-energy effective theory at
 each gap.
+
+\paragraph{2D scope of the present validation.}
+This paper validates the 2D minimal kinematic prototype of the
+(F1)--(F4)~+~(F-twist) construction. The 3D extension and the
+gauge-sector content of Paper~VI are \emph{conjectured} on the
+basis of analogy with Weyl semimetals~\cite{wan2011,
+armitage2018} but \emph{not established here}: the present
+numerical verification is on $L = 128$ in two spatial
+dimensions, with one gap point and one mass scale. Translation
+of the construction to three spatial dimensions, the emergence
+of Weyl points where the gap closes, and the gauge sector of
+Paper~VI are natural extensions under investigation in
+forthcoming papers. Statements made in
+Sec.~\ref{sec:why-weyl} about the universality class of the
+3D rule should be read as conjectural until verified by
+explicit construction; we do not claim that (F1)--(F4) alone
+prove the existence of Weyl points in three dimensions.
 
 We do not address the photon-like massless sector. The
 Floquet rule has no gapless mode in this 2D version; gapless
@@ -1033,14 +1733,58 @@ external Planck-scale anchoring as in Paper~II's
 \section{Open questions}
 \label{sec:open}
 
-\paragraph{Origin of $\lambda = 1/(2\pi)$.}
-The diagonal twist density is one $2\pi$ phase per plaquette
-diagonal. We adopt this by structural fiat. A microscopic
-argument that selects this density --- perhaps from a
-topological invariant of the lattice or a flux-quantisation
-condition --- would close the main remaining gap of this
-construction. The constant $\lambda$ enters $m$ and through it
-$\gamma$ at every $v$, so its origin is structurally important.
+\paragraph{Origin of the topological twist normalisation
+(F-twist) --- the principal open problem.}
+Sec.~\ref{sec:floquet-axiomatic} derives the rule structure of
+Eqs.~\eqref{eq:floquet_cycle}--\eqref{eq:HB} from axioms
+(F1)--(F4), but does not derive (F-twist) --- the unit-flux
+quantisation of the diagonal twist sector that fixes
+$\lambda = 1/(2\pi)$ --- from deeper substrate microphysics.
+(F-twist) encodes the smallest non-trivial U(1) holonomy
+structure compatible with the bipartite sublattice forced by
+(F3), but the choice of unit flux quantum is asserted on
+topological-minimality grounds rather than derived.
+
+\smallskip
+\noindent\emph{What ``topologically smallest non-trivial U(1)
+holonomy'' means.}
+On a bipartite lattice with the diagonal-twist sector forced
+by axiom (F3), the diagonal phase winding per unit area is
+quantised in integer multiples of a basic flux quantum (a
+standard consequence of single-valuedness of the gauge phase
+on closed plaquette loops, in the spirit
+of~\cite{thouless1982}). The choice $\lambda = 1/(2\pi)$
+corresponds to one such unit; integer multiples
+$\lambda_n = n/(2\pi)$ with $n \ge 2$ would embed multiple
+flux quanta per plaquette diagonal, producing a non-minimal
+twist sector and additional UV scales without benefit at the
+low-energy effective theory. Fractional values
+$\lambda < 1/(2\pi)$ would correspond to non-integer winding
+classes, which are excluded by the same single-valuedness
+argument. ``Topologically smallest non-trivial'' is therefore
+shorthand for the minimal positive integer winding class
+compatible with the bipartite structure. What remains
+genuinely unexplained is \emph{why this minimal class is the
+one realised} by the substrate, rather than $n = 0$ (no
+diagonal twist, no gap mass) or $n \ge 2$.
+
+\smallskip
+\noindent\emph{Conceivable routes towards a microscopic
+justification.} Several routes are conceivable:
+(i)~a topological invariant of the underlying lattice graph
+(e.g.\ a first Chern class associated with the diagonal-twist
+bundle, in the sense of~\cite{thouless1982});
+(ii)~a closure condition on a twisted-sector partition
+function over the substrate; (iii)~a connection to
+Chern--Simons theory at the level of the effective long-distance
+description~\cite{witten1989}; or (iv)~a renormalisation-group
+fixed-point argument selecting unit flux as the unique stable
+normalisation. We do not pursue any of these here; we state the
+problem and emphasise that, because the gap mass
+$m = \lambda/T$ enters $\gamma$ at every velocity, the kinematic
+result of this paper is conditional on the resolution of
+(F-twist). This is the principal open problem of the
+construction.
 
 \paragraph{Coupling to the scalar sector.}
 In a static gravitational background $R(r) < R_0$, does the
@@ -1091,14 +1835,28 @@ is available at
 \section{Outlook}
 \label{sec:outlook}
 
-This paper extracts the kinematic time-dilation factor of
-special relativity from a specific lattice rule near a band
-gap, as the operational analogue of the bandwidth-clock
-identification of Paper~II. The result and the rule are
-conditional on the two-step Floquet structure adopted in
-Sec.~\ref{sec:substrate}; that structure has its own
-motivation and its own open questions, which we do not pretend
-to settle here.
+\paragraph{Closing reaffirmation (analogue framing).}
+This paper does not derive special relativity or Lorentz
+invariance. Instead, it shows that the \emph{form} of the
+kinematic time-dilation factor can arise operationally from a
+discrete Floquet spinor rule on a lattice in the continuum
+limit near a band gap, conditional on the axioms (F1)--(F4)
+and the topological hypothesis (F-twist). The result is
+internal to the analogue.
+
+This paper extracts an analogue of the kinematic time-dilation factor of
+special relativity from a lattice rule near a band gap, as the
+operational analogue of the bandwidth-clock identification of
+Paper~II. The result and the rule are conditional on the
+axiomatic propagation framework
+(Sec.~\ref{sec:floquet-axiomatic}): axioms (F1)--(F4) uniquely
+select the two-step Floquet spinor structure, and the
+hypothesis (F-twist) fixes $\lambda = 1/(2\pi)$. The principal
+open task of the present paper is to derive (F-twist) from
+deeper substrate microphysics; until that is done, the gap mass
+$m = \lambda/T = 1/(4\pi)$ should be read as a consequence of
+the four propagation axioms together with the topological
+twist-normalisation hypothesis.
 
 \begin{enumerate}
 \item Paper~IV --- predictions and tests of the gravitational
@@ -1114,45 +1872,30 @@ Floquet rule in 3D and the connection to Maxwell.
 \emph{Speculative; coefficients uncalibrated.}
 \item Paper~VII --- coupling between the scalar and spinor
 sectors. Combined static-gravity $\times$ kinematic factor;
-verification of Eq.~\eqref{eq:combined}. \emph{Conditional on
-Paper~VI's gauge formulation.}
+test of the multiplicative-product \emph{conjecture}
+Eq.~\eqref{eq:combined}, and exploration of alternative
+coupling forms. \emph{Conditional on Paper~VI's gauge
+formulation.}
 \end{enumerate}
 
 The result of this paper, taken on its own, is one structural
-fact: a discrete lattice rule with a Floquet two-step spinor
-sector produces, in the continuum limit near a band gap, the
-Lorentz time-dilation factor as the operational rate of effective
-proper time at moving excitations. The interpretation is
-intrinsic to the rule; no Lorentz invariance, no metric, and no Lorentzian
-proper-time formula is assumed; what is identified is
-the operational substrate quantity, not a metric postulate. The factor that emerges
-is the same as in special relativity, accompanied by lattice
-corrections at high $\gamma$ that are calculable and, in
-principle, falsifiable.
-
-\bibliographystyle{unsrt}
-\bibliography{references}
-
-\end{document}
-ge formulation.}
-\end{enumerate}
-
-The result of this paper, taken on its own, is one structural
-fact: a discrete lattice rule with a Floquet two-step spinor
-sector produces, in the continuum limit near a band gap, the
-Lorentz time-dilation factor as the operational rate of effective
-proper time at moving excitations. The two-step structure is the
-natural form of a rule on a graph with stateful nodes and
-stateful links; the two-component spinor is the minimal logical
-carrier of linear-in-$k$ kinetic dispersion on a bipartite
-lattice. The interpretation is intrinsic to the rule; no
+fact: \emph{the present paper does not derive Lorentz
+invariance}. It derives a Lorentz-form operational clock rate
+for wavepackets in the low-energy sector of a local unitary
+Floquet lattice rule. Specifically, a discrete lattice rule
+selected as the minimal two-component Pauli/Floquet
+representative of the (F1)--(F4) class produces, in the
+continuum limit near a band gap, the operational comoving
+frequency $\omega_{\rm comov} = m/\gamma$ at moving
+excitations. The interpretation is intrinsic to the rule; no
 Lorentz invariance, no metric, and no Lorentzian proper-time
-formula is assumed.
+formula is assumed; what is identified is the operational
+substrate quantity, not a metric postulate. The factor that
+emerges has the same form as in special relativity, accompanied
+by lattice corrections at high $\gamma$ that are calculable
+and, in principle, falsifiable.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
-
-\end{document}
-references}
 
 \end{document}

@@ -26,3 +26,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Work artifacts (peer-review iterations, intermediate builds, scripts)
+feedback_loop/
+reviews/
